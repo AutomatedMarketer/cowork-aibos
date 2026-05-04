@@ -52,8 +52,23 @@ When a phase tells you to write a template to the user workspace, find the match
 | Memory | `templates/memory.md` | `about-me/memory.md` |
 | Connections | `templates/connections.md` | `about-me/connections.md` |
 | Audit log | `templates/audit-log.md` | `about-me/audit-log.md` |
+| Brief preferences | `templates/brief-preferences.md` | `projects/daily-brief/brief-preferences.md` |
 
 After copying, fill in the user's answers from the interview and replace any `~~placeholder` text with their actual content.
+
+## Samples (for the sample-first onboarding path)
+
+The `samples/` folder contains fully-fleshed-out examples for a fictional solo coach. They show users what a "good" filled-out file looks like. Phase 2 offers users the option to read these BEFORE the interview (sample-first path). Files available:
+
+- `samples/claude-md-sample.md`
+- `samples/about-me-sample.md`
+- `samples/business-brain-sample.md`
+- `samples/writing-rules-sample.md`
+- `samples/memory-sample.md`
+- `samples/brief-preferences-sample.md`
+- `samples/community-agent-sample.md` — example of what a custom skill (built via `/add-skill`) looks like; used as the demo example in Phase 5
+
+Samples use `{{PLACEHOLDER — e.g. example}}` syntax so users can see the structure AND a real example value at the same time. Templates (in `templates/`) use `~~placeholder` syntax for actual file generation.
 
 ## Resumability
 

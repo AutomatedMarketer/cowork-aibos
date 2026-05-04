@@ -138,7 +138,9 @@ Say:
 
 > "**/add-skill** — also works if you say **build me a new skill**.
 > 
-> This is the bridge to making AIBOS personal. Anthropic's role plugins (productivity, sales, marketing) cover most generic work. But the parts of YOUR business that nobody else's plugin will cover — your specific client onboarding, your specific lead qualification, your specific weekly report — that's what /add-skill is for. It hands off to Cowork's built-in Skill Creator and walks you through building a skill specific to your workflow. We won't build one today, but plant a flag — this is what /tune-up will use later when it suggests 'build a new skill for X.'"
+> This is the bridge to making AIBOS personal. Anthropic's role plugins (productivity, sales, marketing) cover most generic work. But the parts of YOUR business that nobody else's plugin will cover — your specific client onboarding, your specific lead qualification, your specific weekly report — that's what /add-skill is for. It hands off to Cowork's built-in Skill Creator and walks you through building a skill specific to your workflow. We won't build one today, but plant a flag — this is what /tune-up will use later when it suggests 'build a new skill for X.'
+>
+> Want to see what a finished custom skill looks like? Look at `samples/community-agent-sample.md` in the AIBOS plugin folder — it's a real example of a community engagement skill that runs daily, drafts replies in your voice, and rotates strategic posts. That's the kind of thing /add-skill builds with you."
 
 Move on.
 

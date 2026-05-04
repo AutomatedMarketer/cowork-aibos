@@ -12,8 +12,9 @@ You generate a structured morning brief that takes 60 seconds to read and tells 
 1. `about-me/about-me.md` — for context on what they care about
 2. `about-me/business-brain.md` — for the 90-day priorities
 3. `about-me/writing-rules.md` — for voice (the brief must sound like them, not like AI)
-4. the anti-AI kill list in the appendix below - the brief must pass this scan
-5. The latest entry in `about-me/memory.md` — for what's been happening
+4. `projects/daily-brief/brief-preferences.md` — **if it exists**, this is the user's settings file. It overrides the defaults below (which senders matter, max email count, length target, etc.). Built during onboarding Phase 6. If not present, fall back to the defaults in this skill.
+5. the anti-AI kill list in the appendix below - the brief must pass this scan
+6. The latest entry in `about-me/memory.md` — for what's been happening
 
 Then pull live data:
 - **Google Calendar:** all events for today, plus tomorrow's first event if before 10 AM

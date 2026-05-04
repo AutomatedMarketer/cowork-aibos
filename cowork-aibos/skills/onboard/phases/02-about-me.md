@@ -2,20 +2,51 @@
 
 **What this phase does:** Conducts a structured interview to fill out the four about-me/ files. This is the highest-leverage phase. Output quality across every later skill is capped by what gets written here.
 
-**Time:** 30–45 minutes
+**Time:** 30–60 minutes
 **Output:** `about-me/about-me.md`, `business-brain.md`, `writing-rules.md`, `memory.md`
 
 ---
 
-## Step 1 — Greet, set expectations
+## Step 1 — Greet, offer two paths
 
 Say:
 
-> "Phase 2 of 7: about-me. This is the big one. We'll build four files that teach me who you are, what you sell, how you write, and a notebook I'll keep updating. About 30–45 minutes. Don't rush this — every later skill gets better when these files are richer. Ready? Type **go**."
+> "Phase 2 of 7: about-me. This is the big one. We'll build four files that teach me who you are, what you sell, how you write, and a notebook I'll keep updating. About 30–60 minutes. Don't rush this — every later skill gets better when these files are richer.
+>
+> Two ways to do this:
+>
+> **(a) Interview** — I ask you ~29 questions, one at a time. We build the four files together as we answer them. About 45 minutes total. Best if you want to think out loud.
+>
+> **(b) Sample-first** — I show you a fully fleshed-out example for a fictional solo coach (about-me, business-brain, writing-rules, memory — the whole set). You read it for 3-5 minutes to see what 'good' looks like. Then we do the interview, but it goes faster because you've seen the shape and you'll know what kind of answers actually work. Best if you're a visual thinker or you've never done this before.
+>
+> Type **interview** or **sample-first**."
 
-Wait for `go`.
+Wait for response.
 
-## Step 2 — File 1: about-me.md (10 questions)
+---
+
+## Step 2 (sample-first path only) — Walk through the samples
+
+If they chose `sample-first`, before any questions:
+
+> "Here's what a fully filled-out about-me/ folder looks like for a fictional online coach. Read these four files. They use `{{PLACEHOLDER — e.g. example}}` to mark the parts you'd customize. Take 3-5 minutes. Tell me when you're ready."
+
+Then paste each of the four samples in order, as code blocks, with a one-line intro per file:
+
+1. **claude.md** (handbook): paste contents of `samples/claude-md-sample.md`
+2. **about-me.md**: paste contents of `samples/about-me-sample.md`
+3. **business-brain.md**: paste contents of `samples/business-brain-sample.md`
+4. **writing-rules.md**: paste contents of `samples/writing-rules-sample.md`
+
+After pasting, say:
+
+> "That's what the finished set looks like. Now we build yours. The interview asks ~29 questions across the four files — but you've already seen the shape, so it'll go faster. Ready? Type **go**."
+
+Wait for `go`. Continue to Step 3.
+
+---
+
+## Step 3 — File 1: about-me.md (10 questions)
 
 Read `templates/about-me.md` for the structure. Ask these one at a time:
 
@@ -32,7 +63,9 @@ Read `templates/about-me.md` for the structure. Ask these one at a time:
 
 After Q10, draft the file using the template structure. Show as a code block. Iterate until approved. Save to `about-me/about-me.md`.
 
-## Step 3 — File 2: business-brain.md (12 questions)
+---
+
+## Step 4 — File 2: business-brain.md (12 questions)
 
 Read `templates/business-brain.md` for structure. Ask these one at a time:
 
@@ -51,7 +84,9 @@ Read `templates/business-brain.md` for structure. Ask these one at a time:
 
 Draft, show, iterate, save to `about-me/business-brain.md`.
 
-## Step 4 — File 3: writing-rules.md (7 questions + analysis)
+---
+
+## Step 5 — File 3: writing-rules.md (7 questions + analysis)
 
 Read `templates/writing-rules.md` for structure. Tell the user:
 
@@ -67,17 +102,21 @@ Ask these one at a time:
 6. What specifically bugs you about AI-written content?
 7. **Paste 3–5 samples of your past writing.** Analyze rhythm, vocabulary, structure, tone.
 
-After Q7, build the writing-rules.md file. **Always include the universal anti-AI kill list** inlined as the universal section (look at voice-writer SKILL.md appendix for the full list) as Part 2.
+After Q7, build the writing-rules.md file. **Always include the universal anti-AI kill list** as Part 2 (the full list is in the voice-writer SKILL.md appendix — copy it verbatim).
 
 The user's voice goes in Part 1. The kill list (universal) goes in Part 2 unchanged. Iterate, save to `about-me/writing-rules.md`.
 
-## Step 5 — File 4: memory.md (no interview, just create)
+---
+
+## Step 6 — File 4: memory.md (no interview, just create)
 
 Copy `templates/memory.md` to `about-me/memory.md`. Tell the user:
 
 > "memory.md is your session notebook. I'll append to it every time we work together. You don't write in it — I do. Just leave it there."
 
-## Step 6 — Verify
+---
+
+## Step 7 — Verify
 
 Tell the user:
 
@@ -85,7 +124,9 @@ Tell the user:
 
 Wait for confirmation. If the answer sounds generic, the about-me/ files are probably empty or in the wrong place — check.
 
-## Step 7 — Log and advance
+---
+
+## Step 8 — Log and advance
 
 Append to memory.md:
 
@@ -100,7 +141,9 @@ Append to memory.md:
 
 Update `_aibos/state.md`: `phases.2.status: complete`, `next_phase: 3`.
 
-## Step 8 — Hand off
+---
+
+## Step 9 — Hand off
 
 Say:
 

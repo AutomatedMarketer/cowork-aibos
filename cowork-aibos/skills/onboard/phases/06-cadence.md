@@ -31,6 +31,35 @@ Show them:
 
 If they want to change, update mentally for this session. (We can't change install-time userConfig retroactively — but we can use these new times in the schedule.)
 
+## Step 2.5 — Build brief-preferences.md (the morning brief settings file)
+
+Before scheduling the morning brief, we need to build the preferences file `/morning-brief` reads on every run.
+
+Say:
+
+> "Before we schedule the morning brief, I need to know what *your* useful morning looks like. This is a separate file (`projects/daily-brief/brief-preferences.md`) that the morning brief skill reads every time it fires. Quick questions — about 5 minutes.
+>
+> Want to **see a sample first** of what a filled-out brief-preferences file looks like? Or **just start the questions**? Type **sample** or **start**."
+
+If `sample`, paste contents of `samples/brief-preferences-sample.md` as a code block. After they read it, ask "Ready? Type **go**."
+
+When they're ready, ask these one at a time:
+
+1. **What time** should the morning brief fire on weekdays? (default: 7:00 AM)
+2. **Weekends** — fire or skip?
+3. **Senders who ALWAYS matter** — name 3-5 patterns or specific email addresses (e.g. "any current paying client", "replies to my quotes", specific names).
+4. **Senders who NEVER matter** — name patterns to ignore (newsletters, receipts, noreply addresses, etc.).
+5. **How many emails** to surface per morning? (3-5 recommended)
+6. **Calendar events to skip** — anything tagged "personal," all-day events without descriptions, etc.?
+7. **Never draft replies to** — what categories of email should NEVER get a draft (pricing, contracts, apologies, emotional content)?
+8. **Length target** for the brief — 150-300 words is the default. Shorter or longer?
+
+Use `templates/brief-preferences.md` as the structure. Fill in their answers, replace every `~~placeholder` with their content. Show as a code block. Iterate until approved.
+
+Save to `projects/daily-brief/brief-preferences.md`. Create the `projects/daily-brief/` directory if it doesn't exist.
+
+Tell them: "Saved. The morning brief will read this every time it fires. Now let's schedule it."
+
 ## Step 3 — Set up the morning brief
 
 Tell the user:
