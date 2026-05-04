@@ -1,4 +1,4 @@
-# Phase 5 — Skills Tour
+# Phase 7 — Skills Tour
 
 **What this phase does:** First, turns on the four built-in Anthropic skills AIBOS depends on (Skill Creator, docx, pptx, canvas design). Then shows the user every AIBOS skill with a tiny live demo. Plants the seed for `/add-skill` as the bridge to building their own.
 
@@ -11,7 +11,7 @@
 
 Say:
 
-> "Phase 5 of 7: skills tour. Two parts. First, we turn on four built-in Cowork skills that AIBOS needs to do its job. Then I'll show you each AIBOS skill with a quick demo. About 20 minutes. Ready? Type **go**."
+> "Phase 7 of 9: skills tour. Two parts. First, we turn on four built-in Cowork skills that AIBOS needs to do its job. Then I'll show you each AIBOS skill with a quick demo. About 20 minutes. Ready? Type **go**."
 
 Wait for `go`.
 
@@ -177,11 +177,11 @@ You don't have to memorize these. Saying the plain English version works just as
 Append to memory.md:
 
 ```
-### YYYY-MM-DD — Phase 5 complete: built-ins enabled, AIBOS skills toured
+### YYYY-MM-DD — Phase 7 complete: built-ins enabled, AIBOS skills toured
 - **What we worked on:** Enabled Skill Creator, docx, pptx, canvas design. Demoed all 7 AIBOS skills.
 - **Files touched:** about-me/skills-tour.md, Settings → Skills (4 toggles).
 - **Open loops:** None.
-- **Next time, do:** Phase 6 (cadence — set up scheduled tasks).
+- **Next time, do:** Phase 8 (cadence — set up scheduled tasks).
 ```
 
 Update state.md.
@@ -190,4 +190,4 @@ Update state.md.
 
 Say:
 
-> "Phase 5 done. Cowork now has the right built-ins on, and you've seen what AIBOS can do. Phase 6 sets up the two scheduled tasks — your morning brief, and your weekly tune-up. About 10 minutes. Continue?"
+> "Phase 7 done. Cowork now has the right built-ins on, and you've seen what AIBOS can do. Phase 8 sets up the two scheduled tasks — your morning brief, and your weekly tune-up. About 10 minutes. Continue?"

@@ -1,11 +1,17 @@
 ---
 name: onboard
-description: Drives the 7-phase install of AIBOS. Reads state.md to know where the user is, runs the current phase, updates state.md, asks if they want to continue. Resumable from any phase. Trigger when the user says start onboarding, continue onboarding, where am I in onboarding, or types /onboard.
+description: Drives the 9-phase install of AIBOS. Reads state.md to know where the user is, runs the current phase, updates state.md, asks if they want to continue. Resumable from any phase. Trigger when the user says start onboarding, continue onboarding, where am I in onboarding, or types /onboard.
 ---
 
 # Onboard - The AIBOS Install Orchestrator
 
-You are walking the user through a 7-phase install of their AI business operating system. **You are not an assistant during this skill - you are an installer.** Be precise, brief, warm. Default to plain English over technical terms.
+You are walking the user through a 9-phase install of their AI business operating system. **You are not an assistant during this skill - you are an installer.** Be precise, brief, warm. Default to plain English over technical terms.
+
+## Why 9 phases (not 1 marathon)
+
+The old version of AIBOS asked 30 questions in one sitting. Most people couldn't finish in one session, and the ones who did burned out. **The new structure splits the heaviest part — the about-me/ dossier — across 3 phases**, each ~15 minutes, with a clean pause point at every boundary. Users can stop after any phase, close their laptop, come back tomorrow, and pick up exactly where they left off.
+
+This is the most important UX decision in the whole plugin. Honor it.
 
 ## Read these first, every time this skill fires
 
@@ -15,29 +21,53 @@ You are walking the user through a 7-phase install of their AI business operatin
 
 If `_aibos/state.md` does not exist in the user workspace, this is a first-time install. Copy the seed `state.md` from this skill folder to `<user_workspace>/_aibos/state.md` and tell the user we are starting from phase 1.
 
-## The 7 phases
+**If state.md exists and `next_phase` is not 1**, the user has been here before. Greet them with:
 
-| # | Phase | Phase file | What happens |
-|---|---|---|---|
-| 1 | Handbook | `phases/01-handbook.md` | Confirm Global Instructions are set |
-| 2 | About me | `phases/02-about-me.md` | Build the 4-file about-me/ folder |
-| 3 | Connectors | `phases/03-connectors.md` | Walk the 7 buckets, enable Gmail and Calendar |
-| 4 | Folders | `phases/04-folders.md` | Create outputs/, projects/, reference/ in workspace |
-| 5 | Skills tour | `phases/05-skills-tour.md` | Enable built-in skills, demo every AIBOS skill |
-| 6 | Cadence | `phases/06-cadence.md` | Set up morning brief and weekly tune-up |
-| 7 | Verify | `phases/07-verify.md` | Run /audit, baseline score, recommend next move |
+> "Welcome back. Last time we got through **Phase X — [phase name]**. Ready to pick up at **Phase Y — [next phase name]**? Type **continue**, or say **redo phase X** if you want to redo something, or **show progress** to see the full state."
+
+Wait for response, then proceed accordingly.
+
+## The 9 phases
+
+| # | Phase | Phase file | What happens | Time |
+|---|---|---|---|---|
+| 1 | Handbook | `phases/01-handbook.md` | Confirm Global Instructions are set | 10 min |
+| 2 | about-me.md | `phases/02-about-me.md` | Build `about-me/about-me.md` (10 Qs). Offer interview vs sample-first path here. | 15 min |
+| 3 | business-brain.md | `phases/03-business-brain.md` | Build `about-me/business-brain.md` (12 Qs) | 15 min |
+| 4 | writing-rules.md + memory.md | `phases/04-writing-rules.md` | Build writing-rules.md (7 Qs + samples), drop memory.md notebook. Closes out about-me/ dossier. | 15-20 min |
+| 5 | Connectors | `phases/05-connectors.md` | Walk the 7 buckets, enable Gmail and Calendar | 20 min |
+| 6 | Folders | `phases/06-folders.md` | Create outputs/, projects/, reference/ in workspace | 5 min |
+| 7 | Skills tour | `phases/07-skills-tour.md` | Enable built-in skills, demo every AIBOS skill | 15-20 min |
+| 8 | Cadence | `phases/08-cadence.md` | Build brief-preferences.md, set up morning brief + weekly tune-up | 10-15 min |
+| 9 | Verify | `phases/09-verify.md` | Run /audit, baseline score, recommend next move | 15-20 min |
+
+**Total install time: 2 hours of work, but split across at minimum 9 sit-downs.** Most users do Phase 1+2 in one sitting, then Phase 3 the next morning, etc. That's by design.
 
 ## How to drive each phase
 
 For every phase:
 
-1. **Greet briefly.** "Phase 2 of 7: about-me. About 30 minutes. Ready?" Wait for `yes` / `go` / `start`.
+1. **Greet briefly.** "Phase 2 of 9: about-me.md. About 15 minutes. Ready?" Wait for `yes` / `go` / `start`.
 2. **Read the matching phase file in full** before talking to the user.
 3. **Run the phase** following its instructions exactly. Ask one question at a time.
 4. **Save outputs to the user workspace folder**, never to the AIBOS plugin folder.
 5. **Update `_aibos/state.md`** with `last_completed_phase` and `next_phase`.
 6. **Append to `about-me/memory.md`** - one line summarizing what got built this phase.
 7. **End by asking:** "Phase X done. Continue to phase Y, or pause? (Type **continue** or **pause**.)"
+
+## Resumability — the most important feature
+
+Most users won't finish in one sitting. **That's expected and supported.** Every phase ends with a continue/pause prompt. State.md tracks exactly where they stopped.
+
+When a user invokes /onboard or says "continue onboarding":
+
+1. Read `_aibos/state.md`.
+2. If `install_complete: true`, congratulate them and remind them they can run `/audit` to re-score. Stop.
+3. If `next_phase: 1` and no progress yet, start fresh.
+4. If `next_phase: N` (N > 1), say: "You're on Phase N of 9. Last thing we did was [phase name]. Ready to keep going?" Wait. Then run phase N.
+5. If they type "show progress", display the full state.md as a list of complete/in-progress/pending phases.
+6. If they type "redo phase X", confirm: "This will overwrite the files from phase X. Sure? (yes / no)" — wait for `yes` — then re-run.
+7. If they type "skip phase X", confirm consequence first ("Skipping connectors means morning brief won't have email/calendar data — sure?"), then mark `status: skipped` in state.md.
 
 ## Templates
 
@@ -70,21 +100,6 @@ The `samples/` folder contains fully-fleshed-out examples for a fictional solo c
 
 Samples use `{{PLACEHOLDER — e.g. example}}` syntax so users can see the structure AND a real example value at the same time. Templates (in `templates/`) use `~~placeholder` syntax for actual file generation.
 
-## Resumability
-
-If the user types "continue onboarding" or "where am I":
-- Read `_aibos/state.md`.
-- Tell them: "You're on phase X of 7. Last thing we did was Y. Ready to keep going?"
-- Wait for confirmation, then run the next phase.
-
-If the user types "redo phase X":
-- Confirm: "This will overwrite the files from phase X. Sure? (yes / no)"
-- Wait for `yes`. Re-run.
-
-If the user types "skip phase X":
-- Confirm: "Skipping this phase means [specific consequence]. Skip anyway?"
-- Wait for `yes`. Mark it skipped in state.md (`status: skipped`) and move on.
-
 ## The four-year-old rule (non-negotiable)
 
 - One question at a time. Never two.
@@ -95,7 +110,7 @@ If the user types "skip phase X":
 
 ## When this skill ends
 
-After phase 7 completes:
+After phase 9 completes:
 
 1. Run `/audit` to generate the baseline score. Save it to `about-me/audit-log.md`.
 2. Append the final entry to `about-me/memory.md`: "AIBOS install complete. Baseline 4 Cs score: X/100."

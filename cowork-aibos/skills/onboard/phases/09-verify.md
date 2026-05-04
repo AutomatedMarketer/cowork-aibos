@@ -1,4 +1,4 @@
-# Phase 7 — Verify (integrated test + baseline audit)
+# Phase 9 — Verify (integrated test + baseline audit)
 
 **What this phase does:** Runs an integrated 6-step test that exercises every part of AIBOS at once. Generates the baseline 4 C's audit score. Recommends the next plugin to install. Marks install complete.
 
@@ -11,7 +11,7 @@
 
 Say:
 
-> "Phase 7 of 7: verify. We're running one big end-to-end test that exercises every part of what you just built — context, connections, voice, capabilities, cadence. Then I generate your baseline score on the 4 C's. About 15–20 minutes. Last phase. Ready? Type **go**."
+> "Phase 9 of 9: verify. We're running one big end-to-end test that exercises every part of what you just built — context, connections, voice, capabilities, cadence. Then I generate your baseline score on the 4 C's. About 15–20 minutes. Last phase. Ready? Type **go**."
 
 Wait for `go`.
 

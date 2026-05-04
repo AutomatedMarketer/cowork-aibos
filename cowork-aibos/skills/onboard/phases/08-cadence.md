@@ -1,4 +1,4 @@
-# Phase 6 — Cadence (scheduled tasks)
+# Phase 8 — Cadence (scheduled tasks)
 
 **What this phase does:** Sets up the two foundational scheduled tasks: morning brief (daily) and weekly tune-up (weekly).
 
@@ -11,7 +11,7 @@
 
 Say:
 
-> "Phase 6 of 7: cadence. We're setting up two automatic routines. The first runs every morning. The second runs once a week and is the engine that keeps AIBOS evolving. About 10–15 minutes. Ready? Type **go**."
+> "Phase 8 of 9: cadence. We're setting up two automatic routines. The first runs every morning. The second runs once a week and is the engine that keeps AIBOS evolving. About 10–15 minutes. Ready? Type **go**."
 
 Wait for `go`.
 
@@ -146,12 +146,12 @@ Note their preference in connections.md.
 Append to memory.md:
 
 ```
-### YYYY-MM-DD — Phase 6 complete: scheduled tasks set up
+### YYYY-MM-DD — Phase 8 complete: scheduled tasks set up
 - **What we worked on:** Created morning brief and weekly tune-up scheduled tasks. Test-fired both.
 - **Files touched:** Cowork → Schedule panel (2 entries), outputs/daily-brief/ (first brief), about-me/audit-log.md (baseline).
 - **Decisions I made:** Morning brief at <time>. Tune-up <day and time>. Computer awake strategy: <choice>.
 - **Open loops:** Tune-up will fire for real this <day>. Watch the email arrive.
-- **Next time, do:** Phase 7 (verify).
+- **Next time, do:** Phase 9 (verify).
 ```
 
 Update state.md.
@@ -160,4 +160,4 @@ Update state.md.
 
 Say:
 
-> "Phase 6 done. AIBOS is now running on a schedule. Last phase: an integrated test that exercises everything you've built, then I generate your baseline 4 C's score. About 15 minutes. Continue?"
+> "Phase 8 done. AIBOS is now running on a schedule. Last phase: an integrated test that exercises everything you've built, then I generate your baseline 4 C's score. About 15 minutes. Continue?"

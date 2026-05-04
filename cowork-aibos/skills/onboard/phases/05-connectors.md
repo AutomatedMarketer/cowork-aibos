@@ -1,4 +1,4 @@
-# Phase 3 — Connectors (the 7 Buckets)
+# Phase 5 — Connectors (the 7 Buckets)
 
 **What this phase does:** Walks the user through the 7 categories of tools every business uses, captures their actual stack in `connections.md`, then enables the two must-have connectors (Gmail and Google Calendar).
 
@@ -11,7 +11,7 @@
 
 Say:
 
-> "Phase 3 of 7: connectors. Every business has 7 categories of tools, even if you don't think of them this way. We'll walk through all 7 — you tell me what you use for each — then we'll turn on the must-haves. About 20 minutes. Ready? Type **go**."
+> "Phase 5 of 9: connectors. Every business has 7 categories of tools, even if you don't think of them this way. We'll walk through all 7 — you tell me what you use for each — then we'll turn on the must-haves. About 20 minutes. Ready? Type **go**."
 
 Wait for `go`.
 
@@ -101,12 +101,12 @@ Don't push. If they say "later," note it in `connections.md` under "Connectors I
 Append to memory.md:
 
 ```
-### YYYY-MM-DD — Phase 3 complete: connectors mapped, Gmail + Calendar enabled
+### YYYY-MM-DD — Phase 5 complete: connectors mapped, Gmail + Calendar enabled
 - **What we worked on:** Walked the 7 buckets. Enabled Gmail and Calendar with safe permissions. Created quarterly audit calendar reminder.
 - **Files touched:** about-me/connections.md, Cowork Settings → Connectors.
 - **Decisions I made:** Tools per bucket: <summary>. Optional connectors deferred: <list>.
 - **Open loops:** Connectors to add in future tune-ups: <list>.
-- **Next time, do:** Phase 4 (folders).
+- **Next time, do:** Phase 6 (folders).
 ```
 
 Update state.md.
@@ -115,4 +115,4 @@ Update state.md.
 
 Say:
 
-> "Phase 3 done. I can now read your inbox and calendar safely. Phase 4 sets up the folder structure inside your workspace — where everything I create gets saved. About 5 minutes. Continue?"
+> "Phase 5 done. I can now read your inbox and calendar safely. Phase 6 sets up the folder structure inside your workspace — where everything I create gets saved. About 5 minutes. Continue?"

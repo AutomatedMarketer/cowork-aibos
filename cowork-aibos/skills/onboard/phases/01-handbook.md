@@ -11,7 +11,7 @@
 
 Say:
 
-> "Phase 1 of 7: the handbook. This is the rulebook Claude reads at the start of every Cowork session. It tells Claude how to talk to you, what never to do, and what you care about most. Takes about 10 minutes. Ready? Type **go** to start."
+> "Phase 1 of 9: the handbook. This is the rulebook Claude reads at the start of every Cowork session. It tells Claude how to talk to you, what never to do, and what you care about most. Takes about 10 minutes. Ready? Type **go** to start."
 
 Wait for `go`.
 
@@ -79,6 +79,6 @@ Update `_aibos/state.md`:
 
 Say:
 
-> "Phase 1 done. Your handbook is saved and Claude knows the basics about how you want to work. Next phase builds the deeper context — your actual business, your voice, what's on your mind right now. About 30 minutes. Continue to phase 2, or pause? (Type **continue** or **pause**.)"
+> "Phase 1 done. Your handbook is saved and Claude knows the basics about how you want to work. Next phase starts the about-me/ dossier — 4 files split across 3 phases (about-me → business-brain → writing-rules + memory). Phase 2 is just **about-me.md** — 15 minutes, 10 questions about who you are and what you're working on. You can stop after any phase and resume later. Continue to Phase 2, or pause? (Type **continue** or **pause**.)"
 
 Wait. If `continue`, run phase 2. If `pause`, stop here and remind them they can resume by saying "continue onboarding."

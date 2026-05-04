@@ -1,4 +1,4 @@
-# Phase 4 — Folders (workspace structure)
+# Phase 6 — Folders (workspace structure)
 
 **What this phase does:** Creates the three production folders at the workspace root, plus the `_aibos/` system folder, and updates the handbook with folder-routing rules.
 
@@ -11,7 +11,7 @@
 
 Say:
 
-> "Phase 4 of 7: folders. Quick one — about 5 minutes. We're creating four folders inside your workspace so I always know where to save things. Ready? Type **go**."
+> "Phase 6 of 9: folders. Quick one — about 5 minutes. We're creating four folders inside your workspace so I always know where to save things. Ready? Type **go**."
 
 Wait for `go`.
 
@@ -78,11 +78,11 @@ Wait. If the file lands in the wrong place, the rules didn't load — have them 
 Append to memory.md:
 
 ```
-### YYYY-MM-DD — Phase 4 complete: folder system created
+### YYYY-MM-DD — Phase 6 complete: folder system created
 - **What we worked on:** Created outputs/, projects/, reference/, _aibos/ folders. Added folder routing rules to handbook.
 - **Files touched:** Workspace folders, claude.md (handbook + backup), Settings → Cowork → Global instructions.
 - **Open loops:** None.
-- **Next time, do:** Phase 5 (skills tour).
+- **Next time, do:** Phase 7 (skills tour).
 ```
 
 Update state.md.
@@ -91,4 +91,4 @@ Update state.md.
 
 Say:
 
-> "Phase 4 done. The workspace has structure now. Phase 5 is fun — I show you every AIBOS skill with a tiny live demo, so you know what's available. About 15 minutes. Continue?"
+> "Phase 6 done. The workspace has structure now. Phase 7 is fun — I show you every AIBOS skill with a tiny live demo, so you know what's available. About 15 minutes. Continue?"

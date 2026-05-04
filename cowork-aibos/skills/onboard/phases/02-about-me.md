@@ -1,52 +1,54 @@
-# Phase 2 — About Me (the 4-file identity dossier)
+# Phase 2 — about-me.md (your résumé for Claude)
 
-**What this phase does:** Conducts a structured interview to fill out the four about-me/ files. This is the highest-leverage phase. Output quality across every later skill is capped by what gets written here.
+**What this phase does:** Builds the first of four identity files — `about-me/about-me.md`. This is who you are, what you're working on, who you work with, and how you like to work. Claude reads it at the start of every session.
 
-**Time:** 30–60 minutes
-**Output:** `about-me/about-me.md`, `business-brain.md`, `writing-rules.md`, `memory.md`
+**Time:** 15 minutes
+**Output:** `about-me/about-me.md`
+
+> **Heads up:** the about-me dossier is split across 4 files and 3 phases (Phase 2 → about-me, Phase 3 → business-brain, Phase 4 → writing-rules + memory). You can stop after any phase and resume later. Just say **continue onboarding** next time and I'll pick up where we left off.
 
 ---
 
-## Step 1 — Greet, offer two paths
+## Step 1 — Greet, offer two paths (this phase only)
 
 Say:
 
-> "Phase 2 of 7: about-me. This is the big one. We'll build four files that teach me who you are, what you sell, how you write, and a notebook I'll keep updating. About 30–60 minutes. Don't rush this — every later skill gets better when these files are richer.
+> "Phase 2 of 9: about-me. We'll build the first of four files that teach me who you are. About 15 minutes.
 >
-> Two ways to do this:
+> Two ways we can do this whole about-me dossier (Phases 2-4):
 >
-> **(a) Interview** — I ask you ~29 questions, one at a time. We build the four files together as we answer them. About 45 minutes total. Best if you want to think out loud.
+> **(a) Interview** — I ask questions one at a time. We build each file together. Best if you want to think out loud.
 >
-> **(b) Sample-first** — I show you a fully fleshed-out example for a fictional solo coach (about-me, business-brain, writing-rules, memory — the whole set). You read it for 3-5 minutes to see what 'good' looks like. Then we do the interview, but it goes faster because you've seen the shape and you'll know what kind of answers actually work. Best if you're a visual thinker or you've never done this before.
+> **(b) Sample-first** — I show you fully fleshed-out examples for ALL four files (about-me, business-brain, writing-rules, memory) right now. You read them for 5 minutes to see what 'good' looks like. Then we do each interview, and they go faster because you've seen the shape. Best if you're a visual thinker or you've never done this before.
 >
 > Type **interview** or **sample-first**."
 
-Wait for response.
+Wait for response. Save the choice in `_aibos/state.md` so Phase 3 and 4 don't ask again.
 
 ---
 
-## Step 2 (sample-first path only) — Walk through the samples
+## Step 2 (sample-first only) — Walk through ALL FOUR samples
 
 If they chose `sample-first`, before any questions:
 
-> "Here's what a fully filled-out about-me/ folder looks like for a fictional online coach. Read these four files. They use `{{PLACEHOLDER — e.g. example}}` to mark the parts you'd customize. Take 3-5 minutes. Tell me when you're ready."
+> "Here's what a fully filled-out about-me/ folder looks like for a fictional online coach. All four files. Read them. Take 5 minutes. Tell me when you're ready."
 
-Then paste each of the four samples in order, as code blocks, with a one-line intro per file:
+Then paste each sample as a code block, with a one-line intro per file:
 
-1. **claude.md** (handbook): paste contents of `samples/claude-md-sample.md`
-2. **about-me.md**: paste contents of `samples/about-me-sample.md`
-3. **business-brain.md**: paste contents of `samples/business-brain-sample.md`
-4. **writing-rules.md**: paste contents of `samples/writing-rules-sample.md`
+1. **claude.md** (handbook — already built in Phase 1, but here's how it relates): paste contents of `samples/claude-md-sample.md`
+2. **about-me.md** (this phase): paste contents of `samples/about-me-sample.md`
+3. **business-brain.md** (Phase 3): paste contents of `samples/business-brain-sample.md`
+4. **writing-rules.md** (Phase 4): paste contents of `samples/writing-rules-sample.md`
 
 After pasting, say:
 
-> "That's what the finished set looks like. Now we build yours. The interview asks ~29 questions across the four files — but you've already seen the shape, so it'll go faster. Ready? Type **go**."
+> "That's the finished set. Now we build YOUR about-me.md. Then in Phase 3 we do business-brain, and Phase 4 we do writing-rules + memory. Ready for the about-me interview? Type **go**."
 
-Wait for `go`. Continue to Step 3.
+Wait for `go`.
 
 ---
 
-## Step 3 — File 1: about-me.md (10 questions)
+## Step 3 — Run the about-me.md interview (10 questions)
 
 Read `templates/about-me.md` for the structure. Ask these one at a time:
 
@@ -65,88 +67,31 @@ After Q10, draft the file using the template structure. Show as a code block. It
 
 ---
 
-## Step 4 — File 2: business-brain.md (12 questions)
+## Step 4 — Log and advance
 
-Read `templates/business-brain.md` for structure. Ask these one at a time:
-
-1. What is your business — explain to a smart friend, no jargon, one paragraph?
-2. Main offers/products/services — price, what's included, who it's for?
-3. Ideal customer — age, profession, company size, geography, the **now** trigger?
-4. What does your ideal customer believe about their problem, and what have they tried before?
-5. Top 3 objections before buying?
-6. How does the business make money — revenue model, split if multiple?
-7. Click-to-close flow — every step from stranger to paying customer with timeline?
-8. Top 3 pains you solve (not features)?
-9. Why customers pick you over alternatives — if unclear, say "unclear"?
-10. Current state — revenue range, team size, main channels, #1 priority right now?
-11. 12-month and 3-year aspirations?
-12. Anti-goals + 3 things you're tired of re-explaining?
-
-Draft, show, iterate, save to `about-me/business-brain.md`.
-
----
-
-## Step 5 — File 3: writing-rules.md (7 questions + analysis)
-
-Read `templates/writing-rules.md` for structure. Tell the user:
-
-> "Bring 3–5 real writing samples for the last question — past emails, LinkedIn posts, newsletter sections, website copy. The more honest the samples, the sharper the voice match."
-
-Ask these one at a time:
-
-1. Your writing voice in one sentence — or name 3 creators you want to sound like?
-2. 3–5 adjectives for how you DO sound; 3–5 for how you do NOT sound?
-3. 5–10 words/phrases you use often; words you refuse to use?
-4. Emoji preference; formatting defaults (bullets vs paragraphs, sentence length, capitalization)?
-5. Signature moves — distinctive things you do when writing?
-6. What specifically bugs you about AI-written content?
-7. **Paste 3–5 samples of your past writing.** Analyze rhythm, vocabulary, structure, tone.
-
-After Q7, build the writing-rules.md file. **Always include the universal anti-AI kill list** as Part 2 (the full list is in the voice-writer SKILL.md appendix — copy it verbatim).
-
-The user's voice goes in Part 1. The kill list (universal) goes in Part 2 unchanged. Iterate, save to `about-me/writing-rules.md`.
-
----
-
-## Step 6 — File 4: memory.md (no interview, just create)
-
-Copy `templates/memory.md` to `about-me/memory.md`. Tell the user:
-
-> "memory.md is your session notebook. I'll append to it every time we work together. You don't write in it — I do. Just leave it there."
-
----
-
-## Step 7 — Verify
-
-Tell the user:
-
-> "Open a fresh Cowork task. Type: **'Summarize what you know about me, my business, and how I write — in 3 sentences.'** It should be specific and use your actual words from these files."
-
-Wait for confirmation. If the answer sounds generic, the about-me/ files are probably empty or in the wrong place — check.
-
----
-
-## Step 8 — Log and advance
-
-Append to memory.md:
+Append to memory.md (creating it from `templates/memory.md` if it doesn't exist yet):
 
 ```
-### YYYY-MM-DD — Phase 2 complete: about-me/ built
-- **What we worked on:** Built all four about-me/ files via interview.
-- **Files touched:** about-me/about-me.md, about-me/business-brain.md, about-me/writing-rules.md, about-me/memory.md.
-- **Decisions I made:** ICP: <quote>. Tone: <quote>. Top business priority: <quote>.
+### YYYY-MM-DD — Phase 2 complete: about-me.md built
+- **What we worked on:** Built about-me.md via interview. {{interview or sample-first path}}.
+- **Files touched:** about-me/about-me.md.
+- **Decisions I made:** Role: <quote>. Active projects: <quotes>. Tools: <list>.
 - **Open loops:** <anything the user said they'd revisit later>
-- **Next time, do:** Phase 3 (connectors).
+- **Next time, do:** Phase 3 (business-brain).
 ```
 
-Update `_aibos/state.md`: `phases.2.status: complete`, `next_phase: 3`.
+Update `_aibos/state.md`: `phases.2.status: complete`, `next_phase: 3`, save `interview_path: <interview|sample-first>` so Phases 3 and 4 know which mode to use.
 
 ---
 
-## Step 9 — Hand off
+## Step 5 — Hand off
 
 Say:
 
-> "Phase 2 done. The four files in `about-me/` now teach me who you are. Every skill from here on reads them automatically. Phase 3 connects me to your tools — email, calendar, and whatever else you use. About 20 minutes. Continue, or pause?"
+> "Phase 2 done. about-me.md is saved. That's 1 of 4 dossier files in the bag.
+>
+> Phase 3 builds **business-brain.md** — what you sell, who buys it, what they object to. About 15 minutes. 12 questions.
+>
+> Continue to Phase 3, or pause and pick up later? (Type **continue** or **pause**.)"
 
-Wait. Run phase 3 or stop.
+Wait. Run Phase 3 or stop. If they pause, the next time they invoke /onboard or say "continue onboarding", state.md will route them to Phase 3.
