@@ -1,0 +1,13 @@
+{
+  "name": "cowork-aibos",
+  "owner": {
+    "name": "Nuno Tavares"
+  },
+  "plugins": [
+    {
+      "name": "cowork-aibos",
+      "source": "./cowork-aibos",
+      "description": "Turn Claude Cowork into your AI business operating system. Onboarding, daily brief, voice writer, audit, and a weekly self-improvement loop bundled."
+    }
+  ]
+}

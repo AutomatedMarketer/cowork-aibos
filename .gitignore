@@ -1,0 +1,18 @@
+# OS noise
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Editor
+.vscode/
+.idea/
+
+# Local Claude state (per-developer, not committed)
+_aibos/
+
+# Build artifacts (we ship from main; no build steps)
+*.tar.gz
+*.zip
+node_modules/
+dist/
