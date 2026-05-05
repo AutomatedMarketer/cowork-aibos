@@ -1,6 +1,6 @@
 {
   "name": "cowork-aibos",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "Turn Claude Cowork into your AI business operating system. Onboarding, daily brief, voice writer, audit, and a weekly self-improvement loop bundled. Built by Nuno Tavares of Automated Marketer.",
   "author": {
     "name": "Nuno Tavares"

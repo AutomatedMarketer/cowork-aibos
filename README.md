@@ -5,7 +5,7 @@
 **Build your personal AI Operating System inside Claude Cowork. One install. ~2 hours. Pays back every weekday morning, forever.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-0.5.1-brightgreen.svg)](https://github.com/automatedmarketer/cowork-aibos/releases/latest)
+[![Version](https://img.shields.io/badge/version-0.5.2-brightgreen.svg)](https://github.com/automatedmarketer/cowork-aibos/releases/latest)
 [![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Windows-lightgrey.svg)](#install)
 [![Plugin: Cowork](https://img.shields.io/badge/Claude%20Cowork-plugin-8A2BE2.svg)](https://code.claude.com/docs/en/plugin-marketplaces)
 
@@ -27,7 +27,7 @@ AIBOS is an open-source plugin that turns Claude Cowork into a configured AI tea
 | [⚠️ Mac users — read this first](#-mac-users--read-this-first) | Mac users (git prereq + known Mac issues) |
 | [⚠️ Windows users — read this first](#-windows-users--read-this-first) | Windows users (git prereq) |
 | [Install](#install) | The 4-step install |
-| [❌ If install fails on Mac (zip fallback)](#-if-install-fails-on-mac) | **Mac users hitting Anthropic's open Cowork bugs** |
+| [✅ Mac install (recommended): zip upload](#-mac-install-recommended-zip-upload) | **Recommended path for all Mac users** |
 | [The 9 phases](#the-9-phases) | Time budget for onboarding |
 | [Troubleshooting](#troubleshooting) | When things go sideways |
 
@@ -49,7 +49,7 @@ All built through 9 guided phases. Pause-friendly. Sample-first. Resumable acros
 
 ## ⚠️ Mac users — read this first
 
-> **Heads up:** Anthropic has open bugs affecting Mac plugin installs in Cowork ([#26951](https://github.com/anthropics/claude-code/issues/26951), [#28125](https://github.com/anthropics/claude-code/issues/28125)). The marketplace install below works for many Mac users — but if it fails, the [zip fallback](#-if-install-fails-on-mac) is the supported path and works reliably ([#39400](https://github.com/anthropics/claude-code/issues/39400)).
+> **Use the [zip install](#-mac-install-recommended-zip-upload) — it's the recommended path on Mac.** Anthropic has open bugs affecting marketplace-based plugin installs in Cowork on macOS ([#26951](https://github.com/anthropics/claude-code/issues/26951), [#28125](https://github.com/anthropics/claude-code/issues/28125)). The zip upload bypasses all of them and is confirmed working in [#39400](https://github.com/anthropics/claude-code/issues/39400). The marketplace command in Step 3 below is documented as the secondary path — try it if you prefer, but if anything fails, jump to the zip path.
 
 Before installing, open **Terminal** (Spotlight → "Terminal" → Enter) and run:
 
@@ -115,14 +115,14 @@ In the Cowork tab, click **Choose folder**, select `Claude Cowork`, click **Allo
 
 ### Step 3 — Install AIBOS
 
-In Claude Desktop, run:
+> **Mac user?** Skip to the [zip install](#-mac-install-recommended-zip-upload). It's the recommended path on Mac and works in ~30 seconds.
+
+**Windows (and Mac users who prefer the marketplace):** in Claude Desktop, run:
 
 ```
 /plugin marketplace add automatedmarketer/cowork-aibos
 /plugin install cowork-aibos@cowork-aibos
 ```
-
-> **Mac user?** If either command fails (red toast, "could not connect", "marketplace not found"), skip to the [zip fallback](#-if-install-fails-on-mac). It works.
 
 ### Step 4 — Start onboarding
 
@@ -136,22 +136,31 @@ The 9-phase walkthrough begins.
 
 ---
 
-## ❌ If install fails on Mac
+## ✅ Mac install (recommended): zip upload
 
-Anthropic has open bugs affecting Mac plugin installs in Cowork — most notably [#26951](https://github.com/anthropics/claude-code/issues/26951) (Cowork's VM can't resolve `plugins.claude.ai`) and [#28125](https://github.com/anthropics/claude-code/issues/28125) (Mac throws *"Could not connect to the marketplace host"*). The Anthropic-confirmed workaround is the **zip-upload path** ([#39400](https://github.com/anthropics/claude-code/issues/39400)), which bypasses the marketplace flow entirely.
+This is the recommended install path for all Mac users. It bypasses Anthropic's open Cowork-on-macOS bugs ([#26951](https://github.com/anthropics/claude-code/issues/26951), [#28125](https://github.com/anthropics/claude-code/issues/28125)) and works on every Cowork build that supports plugin uploads. Workaround confirmed by users in [#39400](https://github.com/anthropics/claude-code/issues/39400).
 
-### Zip install (Mac fallback)
+### 5 steps, ~30 seconds
 
-1. Download the latest **`cowork-aibos.zip`** from the [Releases page](https://github.com/automatedmarketer/cowork-aibos/releases/latest)
+1. Download the latest **`cowork-aibos.zip`** from the [Releases page](https://github.com/automatedmarketer/cowork-aibos/releases/latest) (or your training portal). **Don't extract it.** Keep the file as a single `.zip`.
 2. Open Claude Desktop → click your name (top right) → **Settings**
 3. Go to **Customize** → **Browse plugins** → look for the option to **upload a custom plugin file**
-   > *Menu wording may vary slightly between Cowork versions — look for an "Upload" or "Custom plugin" option.*
-4. Drag in the zip
-5. Open a fresh Cowork task → type `start onboarding`
+   > *Menu wording may vary slightly between Cowork versions — look for an "Upload", "Custom plugin", or "From file" option.*
+4. Drag in the zip. Wait for confirmation.
+5. Open a **fresh** Cowork task → type `start onboarding`
 
-This bypasses the marketplace flow entirely and works on every Mac regardless of the Anthropic bugs above.
+That's it. No marketplace, no terminal, no SSH keys, no `git --version` requirement.
 
-> **Note:** Anthropic closed [#27196](https://github.com/anthropics/claude-code/issues/27196) ("All Anthropic plugins fail in Cowork on macOS") as **not planned**. The zip-upload path is effectively the supported install method on Mac going forward.
+> **Why is this the recommended Mac path?** Anthropic closed [#27196](https://github.com/anthropics/claude-code/issues/27196) ("All Anthropic plugins fail in Cowork on macOS") as **not planned** — they don't currently intend to fix the marketplace path on Mac. The zip-upload path is effectively the supported install method on macOS going forward.
+
+### If something on stage looks weird
+
+| Symptom | What to do |
+|---|---|
+| Can't find "Upload" / "Custom plugin" option | Look for "From file" / "Local plugin" / "Add manually". If genuinely absent, your Cowork version is older than the upload feature — quit, update Claude Desktop, relaunch. |
+| Upload rejects the file | Confirm the file extension is `.zip` (not `.plugin`). Re-download directly from the Release page; don't rename. |
+| Plugin uploads but `start onboarding` does nothing | Open a **brand new** Cowork task. Skills load on session start, not retroactively. |
+| Plugin disappears after restart | That's [#38429](https://github.com/anthropics/claude-code/issues/38429) — Anthropic-side persistence bug. Re-upload the zip after restart. |
 
 ---
 
@@ -202,10 +211,10 @@ cowork-aibos/                    ← the plugin
 ## Troubleshooting
 
 ### "Failed to install plugin" red toast (Mac)
-Use the [zip fallback](#zip-install-mac-fallback) above. It works.
+Use the [zip install](#-mac-install-recommended-zip-upload) — it's the recommended Mac path anyway.
 
 ### `/plugin marketplace add` says "not found" or "could not connect"
-- **On Mac:** that's [#28125](https://github.com/anthropics/claude-code/issues/28125) / [#26951](https://github.com/anthropics/claude-code/issues/26951). Use the [zip fallback](#zip-install-mac-fallback).
+- **On Mac:** that's [#28125](https://github.com/anthropics/claude-code/issues/28125) / [#26951](https://github.com/anthropics/claude-code/issues/26951). Use the [zip install](#-mac-install-recommended-zip-upload).
 - **On Windows:** confirm git is installed (`git --version`), fully quit Claude Desktop (Quit from tray), and relaunch.
 
 ### Cowork doesn't recognize `/plugin` commands
