@@ -16,3 +16,6 @@ _aibos/
 *.zip
 node_modules/
 dist/
+
+# Local release staging (zips uploaded to GitHub Releases, not committed)
+.releases/
