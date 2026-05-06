@@ -15,6 +15,9 @@ You generate a structured morning brief that takes 60 seconds to read and tells 
 4. `projects/daily-brief/brief-preferences.md` — **if it exists**, this is the user's settings file. It overrides the defaults below (which senders matter, max email count, length target, etc.). Built during onboarding Phase 6. If not present, fall back to the defaults in this skill.
 5. the anti-AI kill list in the appendix below - the brief must pass this scan
 6. The latest entry in `about-me/memory.md` — for what's been happening
+7. `projects/daily-brief/brief-preferences.md` Q4 (team comms rules) — **if any platform section is present**, invoke the `brief-source-comms` helper skill. The helper handles whichever platforms the user has populated (Slack, Discord, Telegram, Microsoft Teams, or future MCP-supported platforms). Read-only on every platform. If Q4 is empty across all platforms, skip the Team comms section entirely.
+8. `projects/daily-brief/brief-preferences.md` Q5 (Tasks rules) — **if present**, also read `projects/daily-brief/today.md` and surface the unchecked items under the "Today" header. If Q5 is empty or `today.md` doesn't exist, skip the Tasks section entirely.
+9. `projects/daily-brief/brief-preferences.md` Q8 (Draft Reply rules) — **if present**, use these stricter scoring rules instead of the default "draft if obvious" logic. Q8 specifies B1-only, response-required, max-3 drafts, exclusion topics. The default draft logic still works if Q8 is absent.
 
 Then pull live data:
 - **Google Calendar:** all events for today, plus tomorrow's first event if before 10 AM
@@ -40,6 +43,20 @@ Output a markdown file with these sections, in this order. Keep total length und
 2. **[sender]** — [subject] — _why it matters: [one sentence]_
 3. ...
 
+## Team comms
+- **[Slack #channel]** — [snippet] — [sender first name], [time]
+- **[Discord ServerName › #channel]** — [snippet] — [sender first name], [time]
+- **[Telegram chat-name]** — [snippet]
+- **[Slack DM Sender]** — [snippet]
+- _N other DMs unread_
+
+(Skip this entire section if no platform section in Q4 has rules. The helper skill auto-detects which platforms the user populated and pulls only from those — and only from those that have a live MCP connector.)
+
+## Tasks (today.md)
+- [ ] [task line, in user's order, with [QUICK WIN]/[OVERDUE] tags inline]
+
+(Skip this entire section if Q5 is empty or `projects/daily-brief/today.md` is missing.)
+
 ## Quick wins (under 15 min each)
 - [thing that can be done fast]
 - [thing that can be done fast]
@@ -60,6 +77,10 @@ Output a markdown file with these sections, in this order. Keep total length und
 - **Drafts go to Gmail Drafts only — never sent.** And only when the reply is genuinely obvious (a confirmation, a quick acknowledgment, a yes/no). Don't draft replies for things requiring judgment.
 - **Voice match.** Run the brief against the anti-AI kill list in the appendix below before showing. Rewrite anything that hits the list.
 - **No "Good morning!" preamble.** No "I hope this finds you well." Skip the niceties — open with the priority line.
+- **Team comms pulling.** When Q4 has rules for any messaging platform, invoke the `brief-source-comms` helper skill. The helper detects which platforms the user populated, checks which have live MCP connectors, queries each live platform read-only, and returns a unified Team comms section with `[Platform]` tags on each item. If the helper skill isn't installed, append: `(Team comms source not available — install latest cowork-aibos plugin)` and continue. If a platform has Q4 rules but the connector isn't live, the helper notes that inline and still pulls from the connectors that ARE live. If Q4 is empty across all platforms, skip the Team comms section entirely.
+- **Tasks reading.** When Q5 is present in `brief-preferences.md`, read `projects/daily-brief/today.md`, filter to the "Today" section, surface only unchecked items in user-defined order, with inline tags ([QUICK WIN], [OVERDUE], [DELEGATE], [BLOCKED]) rendered as written. Do NOT modify `today.md` — read-only.
+- **Draft scoring with Q8.** When Q8 is present in `brief-preferences.md`, use it as the draft selection lens. Q8 tells you which B1 emails to draft replies for, what to exclude (sensitive topics, ambiguous intent, requires user-specific data), and the format (plain text, voice rules applied, max paragraphs). Q8 overrides the default "if reply is obvious" heuristic. If Q8 is absent, fall back to the default logic above.
+- **Voice on drafts.** Drafts must apply `about-me/writing-rules.md` AND pass the anti-AI kill list before saving to Gmail Drafts.
 
 ## Save and log
 

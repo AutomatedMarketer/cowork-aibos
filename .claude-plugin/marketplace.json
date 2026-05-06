@@ -7,7 +7,7 @@
     {
       "name": "cowork-aibos",
       "source": "./cowork-aibos",
-      "description": "Turn Claude Cowork into your AI business operating system. Onboarding, daily brief, voice writer, audit, and a weekly self-improvement loop bundled."
+      "description": "Turn Claude Cowork into your AI business operating system. Onboarding, daily brief with optional team comms (Slack/Discord/Telegram/Teams) + tasks, voice writer, audit, and a weekly self-improvement loop bundled."
     }
   ]
 }

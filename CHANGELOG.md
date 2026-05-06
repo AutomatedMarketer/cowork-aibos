@@ -1,0 +1,67 @@
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+---
+
+## [0.6.0] — 2026-05-06
+
+### Added — Project 02 (Daily Brief Expansion)
+
+- **`onboard-daily-brief` skill** — 6-phase install walkthrough that extends the existing morning-brief without rewriting it
+  - Phase 0: Welcome + verify P01 baseline + plugin v0.6.0
+  - Phase 1: Append Q4–Q8 to existing `brief-preferences.md` (does NOT replace P01 sections)
+  - Phase 2: Verify the existing brief still produces a clean baseline
+  - Phase 3: Activate Team comms section (Slack, Discord, Telegram, Microsoft Teams)
+  - Phase 4: Add `today.md` task source
+  - Phase 5: Tighten draft selection rules via Q8
+  - Phase 6: Schedule task + 7-day calibration loop
+- **`brief-source-comms` helper skill** — read-only team comms pull, platform-agnostic. Called by morning-brief when any Q4 platform section is populated. Handles Slack, Discord, Telegram, Microsoft Teams, and any future MCP-supported messaging platform — the user fills in only the platforms they use; empty platforms get skipped silently.
+- **`today.md` task source** — markdown-file-based task list scaffolded in `projects/daily-brief/today.md`, read by morning-brief when Q5 is present in prefs
+- **P02 calibration log** at `projects/daily-brief/memory.md` — separate from existing `about-me/memory.md` activity log
+- **`/tune-up daily-brief`** scoped run on day 8 of calibration loop (uses existing tune-up skill)
+
+### Changed
+
+- **`morning-brief/SKILL.md`** patched (additive only) — preserves existing structure (Priority → Calendar → Urgent inbox → Quick wins → Drafts), inserts optional Team comms section after Urgent inbox and optional Tasks section after Team comms. New sections only render when corresponding Q4/Q5 are present in `brief-preferences.md`.
+- **Draft selection** — when Q8 is present in prefs, morning-brief uses the explicit Q8 criteria (B1-only, response-required, max 3, exclusion topics) instead of the default "if reply is obvious" heuristic. Q8 is optional; without it, P01 default behavior continues.
+- **Plugin version** bumped 0.5.2 → 0.6.0
+- **Plugin description** now mentions multi-platform team comms
+
+### Backward compatibility
+
+- Users who never run `/onboard-daily-brief` see zero changes. The brief looks identical to v0.5.2.
+- Existing `brief-preferences.md` files (built in P01 Phase 6) are extended, not replaced. P01 sections stay untouched.
+- Existing `about-me/memory.md` log behavior preserved.
+- All connector permissions unchanged. `send_email` stays BLOCKED — non-negotiable.
+- All messaging platforms wired in read-only mode. No posting, no reactions, no modifications on any platform.
+
+### Mac install note
+
+- `/plugin update cowork-aibos` continues to be unreliable on Mac due to Anthropic's open marketplace bugs (#26951, #28125, #27196 closed not-planned).
+- Mac users update by downloading the v0.6.0 `cowork-aibos.zip` from the [release page](https://github.com/automatedmarketer/cowork-aibos/releases/latest) and re-uploading via Settings → Customize → Browse plugins.
+- User workspace files (`about-me/`, `projects/`, `outputs/`, `_aibos/`) survive the re-upload.
+- Windows users continue using `/plugin update cowork-aibos`.
+
+---
+
+## [0.5.2] — 2026-05-05
+
+### Changed
+
+- Promoted zip-upload as the recommended Mac install path (no longer a fallback)
+- README updated with Mac-specific install flow + live-demo contingency table
+- Section renamed: "❌ If install fails on Mac" → "✅ Mac install (recommended): zip upload"
+
+### Why
+
+Anthropic closed [#27196](https://github.com/anthropics/claude-code/issues/27196) ("All Anthropic plugins fail in Cowork on macOS") as not-planned. Zip upload is now the only reliable Mac install method. Mac users hit the working path immediately instead of failing first.
+
+---
+
+## [0.5.1] and earlier
+
+See git history for prior releases.
