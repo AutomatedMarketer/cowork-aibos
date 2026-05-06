@@ -1,7 +1,7 @@
 {
   "name": "cowork-aibos",
-  "version": "0.6.0",
-  "description": "Turn Claude Cowork into your AI business operating system. Onboarding, daily brief with optional team comms (Slack/Discord/Telegram/Teams) + tasks, voice writer, audit, and a weekly self-improvement loop bundled. Built by Nuno Tavares of Automated Marketer.",
+  "version": "0.7.0",
+  "description": "Turn Claude Cowork into your AI business operating system. Onboarding, daily brief with optional team comms (Slack/Discord/Telegram/Teams) + tasks, plan-then-approve file organization (/tidy-downloads with declared safe zones, never deletes, weekly schedule), voice writer, audit, and a weekly self-improvement loop bundled. Built by Nuno Tavares of Automated Marketer.",
   "author": {
     "name": "Nuno Tavares"
   }

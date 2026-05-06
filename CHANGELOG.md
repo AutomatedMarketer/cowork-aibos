@@ -7,6 +7,47 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.7.0] — 2026-05-06
+
+### Added — Project 03 (File Organization)
+
+- **`tidy-downloads` operational skill** — plan-then-approve file organization for any allow-listed folder. Loads `projects/file-organization/safe-zones.md` BEFORE opening any directory. Writes a plan to `projects/file-organization/plans/`, waits for explicit user approval, executes only approved rows. Six verbatim hard safety constraints in the skill instructions:
+  - Never deletes any file (one scoped exception: deleting its own plan file on REJECT)
+  - Never writes outside the current allow-zone
+  - Never touches any path matching the forbidden list
+  - Always writes the plan BEFORE executing — waits for explicit user approval
+  - Halts immediately on user "STOP" word
+  - Never deletes its own plan file while it contains approved-but-not-yet-executed actions
+- **`onboard-file-organization` skill** — 5-phase install walkthrough (~90 minutes total, pause-friendly):
+  - Phase 0: Welcome + verify P01 baseline + plugin v0.7.0 + scaffold projects folder
+  - Phase 1: Declare safe zones — interview to build `safe-zones.md` (allow-list, forbidden list, "never delete" verbatim user quote, STOP rule)
+  - Phase 2: Verify shipped `/tidy-downloads` skill + dry-run on `_test-tidy/` (refusal test + plan-then-REJECT test)
+  - Phase 3: First live tidy on real allow-zone, with red-flag prompts during plan review and 4-check verification report after execute
+  - Phase 4: Wire weekly scheduled tidy (PLAN ONLY — never auto-execute), monthly `_review/` audit, 4-week calibration log, optional Gmail draft notification
+- **State file** at `_aibos/state-file-organization.md` — phase tracker, pause/resume support
+- **Audit log** at `projects/file-organization/memory.md` — every weekly tidy appends a receipt with reconciled counts (planned/approved/executed/failed/rejected)
+- **Plan files** at `projects/file-organization/plans/tidy-plan-YYYY-MM-DD-HHmm.md` — kept for at least 60 days as the file paper trail
+- **Sample** at `samples/safe-zones-sample.md` — Sarah Mitchell's filled-in `safe-zones.md` for sample-first onboarding
+
+### Changed
+
+- **Plugin version** bumped 0.6.0 → 0.7.0
+- **Plugin description** mentions `/tidy-downloads` + declared safe zones + never deletes
+- **`marketplace.json` description** updated similarly
+
+### Backward compatibility
+
+- Users who never run `/onboard-file-organization` see zero changes. The plugin behaves identically to v0.6.0.
+- Project 02 (daily brief) and Project 01 (core setup) are completely untouched.
+- `/tidy-downloads` refuses to run if `safe-zones.md` is missing, so installing the plugin without running onboarding cannot accidentally trigger any file moves.
+- All connector permissions unchanged. `send_email` stays BLOCKED. The new skills are read-only on connectors and write-restricted to declared allow-zones for filesystem operations.
+
+### Mac install note
+
+Same as v0.6.0 — `/plugin update cowork-aibos` is unreliable on Mac due to Anthropic's open marketplace bugs (#26951, #28125, #27196 closed not-planned). Mac users update by downloading `cowork-aibos.zip` from the [release page](https://github.com/AutomatedMarketer/cowork-aibos/releases/latest) and re-uploading via Settings → Customize → Browse plugins. User workspace files survive the re-upload. Windows users continue using `/plugin update cowork-aibos`.
+
+---
+
 ## [0.6.0] — 2026-05-06
 
 ### Added — Project 02 (Daily Brief Expansion)
