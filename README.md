@@ -1,11 +1,11 @@
 <div align="center">
 
-# AIBOS — AI Operating System for Claude Cowork
+# Cowork AI OS — AI Operating System for Claude Cowork
 
 **Build your personal AI Operating System inside Claude Cowork. One install. ~2 hours. Pays back every weekday morning, forever.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-0.5.2-brightgreen.svg)](https://github.com/automatedmarketer/cowork-aibos/releases/latest)
+[![Version](https://img.shields.io/badge/version-0.5.2-brightgreen.svg)](https://github.com/automatedmarketer/cowork-ai-os/releases/latest)
 [![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Windows-lightgrey.svg)](#install)
 [![Plugin: Cowork](https://img.shields.io/badge/Claude%20Cowork-plugin-8A2BE2.svg)](https://code.claude.com/docs/en/plugin-marketplaces)
 
@@ -15,7 +15,7 @@
 
 ---
 
-AIBOS is an open-source plugin that turns Claude Cowork into a configured AI teammate that knows your business, your voice, and your day. Built by [Nuno Tavares](https://nunomtavares.com) for VCI cohort students and anyone who wants to install AI infrastructure instead of bouncing between chat tabs.
+Cowork AI OS is an open-source plugin that turns Claude Cowork into a configured AI teammate that knows your business, your voice, and your day. Built by [Nuno Tavares](https://nunomtavares.com) for VCI cohort students and anyone who wants to install AI infrastructure instead of bouncing between chat tabs.
 
 ---
 
@@ -23,7 +23,7 @@ AIBOS is an open-source plugin that turns Claude Cowork into a configured AI tea
 
 | Section | Who it's for |
 |---|---|
-| [What you get](#what-you-get) | Everyone — what AIBOS actually installs |
+| [What you get](#what-you-get) | Everyone — what Cowork AI OS actually installs |
 | [⚠️ Mac users — read this first](#-mac-users--read-this-first) | Mac users (git prereq + known Mac issues) |
 | [⚠️ Windows users — read this first](#-windows-users--read-this-first) | Windows users (git prereq) |
 | [Install](#install) | The 4-step install |
@@ -113,15 +113,15 @@ Create a folder named exactly `Claude Cowork` in your home directory.
 
 In the Cowork tab, click **Choose folder**, select `Claude Cowork`, click **Allow**. Header should read **Working in: Claude Cowork**.
 
-### Step 3 — Install AIBOS
+### Step 3 — Install Cowork AI OS
 
 > **Mac user?** Skip to the [zip install](#-mac-install-recommended-zip-upload). It's the recommended path on Mac and works in ~30 seconds.
 
 **Windows (and Mac users who prefer the marketplace):** in Claude Desktop, run:
 
 ```
-/plugin marketplace add automatedmarketer/cowork-aibos
-/plugin install cowork-aibos@cowork-aibos
+/plugin marketplace add automatedmarketer/cowork-ai-os
+/plugin install cowork-ai-os@cowork-ai-os
 ```
 
 ### Step 4 — Start onboarding
@@ -142,7 +142,7 @@ This is the recommended install path for all Mac users. It bypasses Anthropic's 
 
 ### 5 steps, ~30 seconds
 
-1. Download the latest **`cowork-aibos.zip`** from the [Releases page](https://github.com/automatedmarketer/cowork-aibos/releases/latest) (or your training portal). **Don't extract it.** Keep the file as a single `.zip`.
+1. Download the latest **`cowork-ai-os.zip`** from the [Releases page](https://github.com/automatedmarketer/cowork-ai-os/releases/latest) (or your training portal). **Don't extract it.** Keep the file as a single `.zip`.
 2. Open Claude Desktop → click your name (top right) → **Settings**
 3. Go to **Customize** → **Browse plugins** → look for the option to **upload a custom plugin file**
    > *Menu wording may vary slightly between Cowork versions — look for an "Upload", "Custom plugin", or "From file" option.*
@@ -167,7 +167,7 @@ That's it. No marketplace, no terminal, no SSH keys, no `git --version` requirem
 ## What's inside
 
 ```
-cowork-aibos/                    ← the plugin
+cowork-ai-os/                    ← the plugin
 ├── .claude-plugin/
 │   └── plugin.json              Plugin metadata + version
 ├── skills/
@@ -224,11 +224,11 @@ Update Claude Desktop to the latest version. The plugin commands ship with Cowor
 Open a fresh Cowork task — skills load on session start. If still failing, see [#39274](https://github.com/anthropics/claude-code/issues/39274) (Anthropic-side issue).
 
 ### Install hangs at any phase
-Type `pause onboarding`, close the task, open a fresh task, type `continue onboarding`. AIBOS picks up where you left off — your `about-me/`, `outputs/`, and `_aibos/state.md` survive across sessions.
+Type `pause onboarding`, close the task, open a fresh task, type `continue onboarding`. Cowork AI OS picks up where you left off — your `about-me/`, `outputs/`, and `_aibos/state.md` survive across sessions.
 
-### How do I update AIBOS?
+### How do I update Cowork AI OS?
 ```
-/plugin update cowork-aibos
+/plugin update cowork-ai-os
 ```
 Your `about-me/`, `outputs/`, and `_aibos/state.md` survive — they live in your workspace, not in the plugin.
 
@@ -252,7 +252,7 @@ The full Project 01 — Core Setup curriculum (Quick Start + 8 lessons + concept
 
 ## Contributing
 
-Issues and PRs welcome. If you hit a Mac install snag not covered in [Troubleshooting](#troubleshooting), please [open an issue](https://github.com/automatedmarketer/cowork-aibos/issues/new) with:
+Issues and PRs welcome. If you hit a Mac install snag not covered in [Troubleshooting](#troubleshooting), please [open an issue](https://github.com/automatedmarketer/cowork-ai-os/issues/new) with:
 
 - Your Cowork / Claude Desktop version
 - The exact error message (red toast text or terminal output)
@@ -270,7 +270,7 @@ MIT — fork it, edit it, make it your own. See [LICENSE](LICENSE).
 
 <div align="center">
 
-*AIBOS is open source at [github.com/automatedmarketer/cowork-aibos](https://github.com/automatedmarketer/cowork-aibos)*
+*Cowork AI OS is open source at [github.com/automatedmarketer/cowork-ai-os](https://github.com/automatedmarketer/cowork-ai-os)*
 *Built for VCI cohort students and anyone who wants to stop using Claude like a chatbot — and start using it like infrastructure.*
 
 </div>

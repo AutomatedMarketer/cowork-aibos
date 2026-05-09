@@ -1,13 +1,13 @@
 {
-  "name": "cowork-aibos",
+  "name": "cowork-ai-os",
   "owner": {
     "name": "Nuno Tavares"
   },
   "plugins": [
     {
-      "name": "cowork-aibos",
-      "source": "./cowork-aibos",
-      "description": "Turn Claude Cowork into your AI business operating system. Onboarding, daily brief with optional team comms + tasks, plan-then-approve file organization (/tidy-downloads — never deletes), voice writer, audit, and a weekly self-improvement loop bundled."
+      "name": "cowork-ai-os",
+      "source": "./cowork-ai-os",
+      "description": "Turn Claude Cowork into your AI operating system. Onboarding, daily brief with optional team comms + tasks, plan-then-approve file organization (/tidy-downloads — never deletes), voice writer, audit, and a weekly self-improvement loop bundled."
     }
   ]
 }

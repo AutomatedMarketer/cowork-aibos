@@ -7,6 +7,39 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.8.0] — 2026-05-09
+
+### Changed — BREAKING: full rebrand to Cowork AI OS
+
+The plugin's identifier (`name` in `plugin.json` and `marketplace.json`) is renamed from `cowork-aibos` to `cowork-ai-os`. The plugin folder inside the repo is renamed to match. The user-facing brand throughout the README, CONNECTORS, skill descriptions, phase walkthroughs, and templates is now **Cowork AI OS** instead of "AIBOS" (the "B" in AIBOS originally stood for "Business Operating System" — dropped for clarity). The GitHub repo itself is also renamed from `cowork-aibos` to `cowork-ai-os` in this release.
+
+**What this means for you:**
+
+- **New installs (Mac, Windows, Linux):** use the new marketplace path:
+  ```
+  /plugin marketplace add automatedmarketer/cowork-ai-os
+  /plugin install cowork-ai-os
+  ```
+- **Existing installs (anyone on v0.7.0 or earlier):** the old `cowork-aibos` plugin name will not auto-upgrade to `cowork-ai-os` because the slash-command namespace changed. To migrate:
+  1. Uninstall the old plugin: `/plugin uninstall cowork-aibos`
+  2. Remove the old marketplace: `/plugin marketplace remove cowork-aibos`
+  3. Add the new marketplace: `/plugin marketplace add automatedmarketer/cowork-ai-os`
+  4. Install the new plugin: `/plugin install cowork-ai-os`
+  5. Your workspace files (`about-me/`, `projects/`, `outputs/`, `_aibos/`) are unchanged and will be picked up by the new plugin automatically.
+- **The `_aibos/` state folder name is preserved** for backwards compatibility with existing user installs. The plugin still reads/writes `_aibos/state.md`, `_aibos/state-daily-brief.md`, and `_aibos/state-file-organization.md` at the workspace root. This may be renamed in a future major release.
+- **Mac users:** continue using the zip-upload route (per v0.5.2 note) — `/plugin update` is still unreliable on Mac due to Anthropic's open marketplace bugs. Download `cowork-ai-os.zip` from the [release page](https://github.com/AutomatedMarketer/cowork-ai-os/releases/latest) and re-upload via Settings → Customize → Browse plugins.
+
+### Why the rename
+
+The "AIBOS" acronym (AI Business Operating System) was opaque — students and beta testers consistently asked what the "B" stood for. The new name "Cowork AI OS" reads cleanly in the plugin list and matches how the plugin is taught in the accompanying course materials.
+
+### Upgrade impact
+
+- **Slash-command namespace change:** if Claude Cowork starts namespacing slash commands as `/<plugin-name>:<skill>`, existing scripts/notes referencing `/cowork-aibos:onboard` (etc.) need to become `/cowork-ai-os:onboard`. Bare `/onboard` continues to work where Cowork resolves namespaces automatically.
+- **No content changes:** all 9 phases, all 10 skills, all hard safety rules (`send_email = BLOCKED`, plan-then-approve for `/tidy-downloads`, append-only `memory.md`) are preserved unchanged. This is a rename release, not a feature release.
+
+---
+
 ## [0.7.0] — 2026-05-06
 
 ### Added — Project 03 (File Organization)

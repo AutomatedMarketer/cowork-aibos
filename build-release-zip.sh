@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # build-release-zip.sh
 #
-# Build the cowork-aibos.zip artifact used by Mac users to install/update
+# Build the cowork-ai-os.zip artifact used by Mac users to install/update
 # via Settings → Customize → Browse plugins.
 #
 # Usage:
@@ -9,16 +9,16 @@
 #   ./build-release-zip.sh
 #
 # Output:
-#   release/cowork-aibos.zip
+#   release/cowork-ai-os.zip
 #
 # Then attach the zip to the GitHub release.
 
 set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "$0")" && pwd)"
-PLUGIN_DIR="$REPO_ROOT/cowork-aibos"
+PLUGIN_DIR="$REPO_ROOT/cowork-ai-os"
 RELEASE_DIR="$REPO_ROOT/release"
-ZIP_NAME="cowork-aibos.zip"
+ZIP_NAME="cowork-ai-os.zip"
 ZIP_PATH="$RELEASE_DIR/$ZIP_NAME"
 
 # Sanity checks
@@ -40,7 +40,7 @@ if [[ -z "$VERSION" ]]; then
   exit 1
 fi
 
-echo "→ Building cowork-aibos v$VERSION zip"
+echo "→ Building cowork-ai-os v$VERSION zip"
 
 # Clean and create release dir
 rm -rf "$RELEASE_DIR"
@@ -48,9 +48,9 @@ mkdir -p "$RELEASE_DIR"
 
 # Build the zip
 # IMPORTANT: zip from INSIDE the plugin dir so the archive has plugin contents at the
-# zip root (`.claude-plugin/plugin.json` at root, no nested `cowork-aibos/` folder).
+# zip root (`.claude-plugin/plugin.json` at root, no nested `cowork-ai-os/` folder).
 # Cowork's "Customize → Browse plugins → upload" flow expects this flat layout —
-# v0.5.2 shipped this way and worked. Nesting under `cowork-aibos/` breaks Mac install.
+# v0.5.2 shipped this way and worked. Nesting under `cowork-ai-os/` breaks Mac install.
 cd "$PLUGIN_DIR"
 
 # Exclude:
@@ -71,11 +71,11 @@ echo ""
 echo "→ Verifying zip contents..."
 
 REQUIRED_FILES=(
-  "cowork-aibos/.claude-plugin/plugin.json"
-  "cowork-aibos/skills/onboard/SKILL.md"
-  "cowork-aibos/skills/morning-brief/SKILL.md"
-  "cowork-aibos/skills/onboard-daily-brief/SKILL.md"
-  "cowork-aibos/skills/brief-source-comms/SKILL.md"
+  "cowork-ai-os/.claude-plugin/plugin.json"
+  "cowork-ai-os/skills/onboard/SKILL.md"
+  "cowork-ai-os/skills/morning-brief/SKILL.md"
+  "cowork-ai-os/skills/onboard-daily-brief/SKILL.md"
+  "cowork-ai-os/skills/brief-source-comms/SKILL.md"
 )
 
 MISSING=0
