@@ -41,7 +41,7 @@ Read `_aibos/state-daily-brief.md` from the user's workspace. Three cases:
 
 ### Step 2 — Verify Project 01 baseline
 
-Before Phase 0, confirm `_aibos/state.md` exists and shows `core_setup_complete: true`. If not, STOP and tell the user to run `/onboard` first.
+Before Phase 0, confirm `_aibos/state.md` exists and shows `install_complete: true`. If not, STOP and tell the user to run `/onboard` first.
 
 Confirm `projects/daily-brief/brief-preferences.md` already exists (P01 Phase 6 builds it). If missing, the user skipped P01 Phase 6 — send them back.
 

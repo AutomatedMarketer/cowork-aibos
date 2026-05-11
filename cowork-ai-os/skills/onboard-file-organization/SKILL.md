@@ -34,7 +34,7 @@ Read `_aibos/state-file-organization.md` from the user's workspace. Three cases:
 
 ### Step 2 — Verify Project 01 baseline
 
-Before Phase 0, confirm `_aibos/state.md` exists and shows `core_setup_complete: true`. If not, STOP and tell the user to run `/onboard` first.
+Before Phase 0, confirm `_aibos/state.md` exists and shows `install_complete: true`. If not, STOP and tell the user to run `/onboard` first.
 
 Confirm the plugin is at v0.7.0+. The presence of `skills/tidy-downloads/SKILL.md` in the plugin folder confirms v0.7.0+. If missing on Mac, instruct them to download the latest `cowork-ai-os.zip` from https://github.com/AutomatedMarketer/cowork-ai-os/releases/latest and re-upload via Settings → Customize → Browse plugins. On Windows, instruct them to run `/plugin update cowork-ai-os`.
 

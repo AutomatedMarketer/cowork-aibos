@@ -106,7 +106,7 @@ If `save for next time`, note it in memory.md as the recommended next session.
 ## Step 5 — Mark install complete
 
 Update `_aibos/state.md`:
-- `phases.7.status: complete`
+- `phases.9.status: complete`
 - `install_complete: true`
 - `installed_at: <today's date and time>`
 - `baseline_audit_score: <score>`
@@ -118,7 +118,7 @@ Append to memory.md:
 ```
 ### YYYY-MM-DD — Cowork AI OS install complete
 
-- **What we worked on:** Finished the 7-phase install. Ran the integrated verification test. Generated baseline 4 C's audit.
+- **What we worked on:** Finished the 9-phase install. Ran the integrated verification test. Generated baseline 4 C's audit.
 - **Files touched:** outputs/ai-os-verification/, about-me/audit-log.md (entry 1), _aibos/state.md (install_complete: true).
 - **Baseline score:** <X>/100. Biggest gap: <gap>.
 - **Decisions I made:** Next plugin to install: <plugin>. Computer awake strategy: <strategy>.
