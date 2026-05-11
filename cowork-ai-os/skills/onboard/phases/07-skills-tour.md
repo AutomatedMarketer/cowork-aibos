@@ -76,7 +76,7 @@ Say:
 
 > "**/onboard** — also works if you say **start onboarding** or **continue onboarding**.
 > 
-> This is the skill we're running right now. It walks you through this 7-phase install. Resumable from any phase. You won't need it again after we finish, except if you ever want to redo a specific phase."
+> This is the skill we're running right now. It walks you through this 9-phase install. Resumable from any phase. You won't need it again after we finish, except if you ever want to redo a specific phase."
 
 Move on.
 
@@ -161,7 +161,7 @@ Write to `about-me/skills-tour.md`:
 
 | Slash | Plain English | What it does |
 |---|---|---|
-| /onboard | "start onboarding" | The 7-phase install. Resumable. |
+| /onboard | "start onboarding" | The 9-phase install. Resumable. |
 | /audit | "check my system" | 4 C's score + top gaps |
 | /level-up | "what should I improve next" | Recommends next leverage move |
 | /tune-up | "weekly tune-up" | Friday self-improvement loop |

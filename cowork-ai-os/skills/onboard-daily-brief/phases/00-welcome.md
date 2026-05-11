@@ -42,7 +42,7 @@ Execute these steps in order. Confirm each before moving on.
 
 ### Step 1 — Verify Project 01 is complete
 
-Read `_aibos/state.md` (the Project 01 state file). Check `core_setup_complete: true`.
+Read `_aibos/state.md` (the Project 01 state file). Check `install_complete: true`.
 
 If false, STOP:
 
@@ -170,7 +170,7 @@ daily_brief_complete: false
 
 Before marking Phase 0 complete, confirm:
 
-- [ ] `core_setup_complete: true` in `_aibos/state.md`
+- [ ] `install_complete: true` in `_aibos/state.md`
 - [ ] `projects/daily-brief/brief-preferences.md` exists with P01 sections filled in
 - [ ] Plugin v0.6.0+ — `skills/brief-source-comms/SKILL.md` exists in plugin install
 - [ ] Gmail connector live, `send_email` BLOCKED

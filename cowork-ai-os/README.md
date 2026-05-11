@@ -51,7 +51,7 @@ start onboarding
 
 | Slash command | Plain English | What it does |
 |---|---|---|
-| `/onboard` | "start onboarding" | The 7-phase install. Resumable from any phase. |
+| `/onboard` | "start onboarding" | The 9-phase install. Resumable from any phase. |
 | `/audit` | "check my system" | 4 C's audit. Score 0-100. Top 3 gaps. |
 | `/level-up` | "what should I improve next" | 5 questions → one specific recommendation |
 | `/tune-up` | "weekly tune-up" | The 5-gate self-improvement loop |
@@ -59,7 +59,7 @@ start onboarding
 | `/voice-writer` | "write this in my voice" | Drafts anything using `writing-rules.md` |
 | `/add-skill` | "build me a new skill" | Hands off to Cowork's Skill Creator with a spec |
 
-Plus 7 templates (handbook, about-me, business-brain, writing-rules, memory, connections, audit-log), 7 onboarding phase files, and reference appendices for the 4 C's framework, anti-AI kill list, and complementary plugins.
+Plus 7 templates (handbook, about-me, business-brain, writing-rules, memory, connections, audit-log), 9 onboarding phase files, and reference appendices for the 4 C's framework, anti-AI kill list, and complementary plugins.
 
 ---
 
@@ -67,19 +67,21 @@ Plus 7 templates (handbook, about-me, business-brain, writing-rules, memory, con
 
 In Cowork, type `start onboarding`.
 
-You'll go through 7 phases, conversationally:
+You'll go through 9 phases, conversationally:
 
-1. **Handbook** — your global instructions (10 min)
-2. **About me** — 4-file identity dossier (30–45 min)
-3. **Connectors** — the 7 buckets, plus enable Gmail and Calendar (15–20 min)
-4. **Folders** — workspace structure (5 min)
-5. **Skills tour** — turn on the four built-in Cowork skills Cowork AI OS depends on (Skill Creator, docx, pptx, canvas design), then see every Cowork AI OS skill with a tiny demo (20 min)
-6. **Cadence** — set up morning brief + weekly tune-up (10–15 min)
-7. **Verify** — integrated test + baseline audit score (15–20 min)
+1. **Handbook** — your global instructions (~10 min)
+2. **About-me file** — who you are (~15 min)
+3. **Business brain** — what you sell, who you serve (~15 min)
+4. **Voice + memory files** — how you write + session log (~20 min)
+5. **Gmail + Calendar connectors** — safe permissions (~15 min)
+6. **Folder system** — workspace structure (~5 min)
+7. **Skills tour + plugin install** — turn on the four built-in Cowork skills Cowork AI OS depends on (Skill Creator, docx, pptx, canvas design), then see every Cowork AI OS skill with a tiny demo (~20 min)
+8. **Daily brief on a schedule** — morning brief + weekly tune-up (~15 min)
+9. **Integrated verification + upkeep** — end-to-end test + baseline audit (~15 min)
 
 You can pause anytime. Resume by saying "continue onboarding."
 
-### Built-in Cowork skills you'll be turning ON during Phase 5
+### Built-in Cowork skills you'll be turning ON during Phase 7
 
 These ship with Cowork but are OFF by default. Cowork AI OS turns them on in Phase 5 of `/onboard`:
 

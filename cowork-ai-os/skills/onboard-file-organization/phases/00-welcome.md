@@ -46,7 +46,7 @@ Execute these steps in order. Confirm each before moving on.
 
 ### Step 1 — Verify Project 01 is complete
 
-Read `_aibos/state.md` (the Project 01 state file). Check `core_setup_complete: true`.
+Read `_aibos/state.md` (the Project 01 state file). Check `install_complete: true`.
 
 If false, STOP:
 
@@ -106,7 +106,7 @@ Tell the user:
 
 Phase 0 is complete when ALL of these are true:
 
-- `_aibos/state.md` confirms `core_setup_complete: true`
+- `_aibos/state.md` confirms `install_complete: true`
 - Plugin version is 0.7.0 or later (verified by presence of `skills/tidy-downloads/SKILL.md`)
 - `projects/file-organization/` folder exists
 - `projects/file-organization/plans/` and `projects/file-organization/reviews/` subfolders exist
