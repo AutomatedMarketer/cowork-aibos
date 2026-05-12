@@ -53,7 +53,7 @@ Each phase script in `phases/0N-*.md` is the source of truth for that phase. Fol
 
 ### Step 4 — Sample-first option
 
-At Phase 1 (extending the prefs file), offer Sarah Mitchell's sample additions. Read from `samples/sarahs-prefs-additions.md`.
+At Phase 1 (extending the prefs file), offer the sample additions as a filled-in example. Read from `samples/sarahs-prefs-additions.md`.
 
 ### Step 5 — Pause and resume
 

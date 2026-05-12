@@ -18,7 +18,7 @@ When the user runs `/onboard-daily-brief` for the first time, say this:
 >
 > *One hard rule still in effect: Claude drafts. You approve. You send. This skill never sends an email, never posts to any messaging platform, never modifies your calendar.*
 >
-> *Before we start Phase 1, do you want to see Sarah Mitchell's Q4–Q8 prefs additions? Reading her version first makes the questions land faster. Type `show me sarah's additions` for sample-first, or `let's go` to jump in."*
+> *Before we start Phase 1, do you want to see a filled-in sample of Q4–Q8 prefs additions? Reading the sample first makes the questions land faster. Type `show me the sample` for sample-first, or `let's go` to jump in."*
 
 ---
 

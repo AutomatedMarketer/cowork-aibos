@@ -38,7 +38,7 @@ The v0.8 handbook (the file pasted into Cowork's Global Instructions during onbo
 
 > *"At the start of every session, read every file in `about-me/` before responding to my first message."*
 
-Cowork treated every prompt like a session start, so Claude obediently re-read 5–7 identity files on **every** prompt before answering anything. After a few months of daily use, that was 11,000+ tokens of pre-loaded context per prompt and 20+ seconds of latency. Sarah, one of the first students to install, lost an hour to it in one week. She's the reason this got fixed.
+Cowork treated every prompt like a session start, so Claude obediently re-read 5–7 identity files on **every** prompt before answering anything. After a few months of daily use, that was 11,000+ tokens of pre-loaded context per prompt and 20+ seconds of latency. An early student reported losing roughly an hour of working time to it. That bug report drove the v0.9 fix.
 
 ---
 
