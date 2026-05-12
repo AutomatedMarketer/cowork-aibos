@@ -14,7 +14,7 @@
 
 - **Channels to monitor:** #acme-team, #brightstack-build, #general, #urgent
 - **DM treatment:**
-  - **Surface:** all unread DMs from Mike Chen (contractor), Lisa (contractor), and any current paying client (jenny@acmeco.com, alex@brightstack.io, founders@lumen.app, hello@halobrands.co)
+  - **Surface:** all unread DMs from Mike Chen (contractor), Lisa (contractor), and any current paying client (jenny@example.com, alex@example.org, founders@example.net, hello@example.com — replace these `example.*` placeholders with your real client emails when you customize this file)
   - **Filter:** bot DMs (Slackbot, GitHub, Linear, Loom)
   - **Count-only:** everyone else (ex-contractors, vendors, networking) — show count line, no detail
 

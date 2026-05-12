@@ -1,6 +1,6 @@
 {
   "name": "cowork-ai-os",
-  "version": "0.10.0",
+  "version": "0.10.1",
   "description": "Turn Claude Cowork into your AI operating system. v0.10 adds a discovery layer (/browse-skills and /browse-connectors) that recommends the right community plugins and MCP connectors for the user's specific business. Bundled: 9-phase onboarding, daily brief with optional team comms (Slack/Discord/Telegram/Teams) and tasks, plan-then-approve file organization (/tidy-downloads — never deletes), voice writer with anti-AI kill list, 4 Cs audit, weekly self-improvement loop, /optimize speed-fix, plus auto-archiving memory. Self-installed and self-onboarding. Built by Nuno Tavares of Automated Marketer.",
   "author": {
     "name": "Nuno Tavares"

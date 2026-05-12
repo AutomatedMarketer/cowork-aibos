@@ -1,3 +1,16 @@
+# Secrets — never commit env files or credential-shaped files
+.env
+.env.*
+*.pem
+*.key
+*.p12
+id_rsa
+id_rsa.*
+*.cert
+*.crt
+secrets/
+credentials.json
+
 # OS noise
 .DS_Store
 Thumbs.db
