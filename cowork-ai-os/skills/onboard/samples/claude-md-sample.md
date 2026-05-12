@@ -2,7 +2,7 @@
 
 This is the file Claude reads at the start of every Co-Work session. Think of it as the employee handbook for your new AI teammate. Paste this into **Settings → Co-Work → Global Instructions**.
 
-Replace everything inside `{{DOUBLE_BRACES}}` with your own content. Leave the structure intact — Claude relies on the section headers.
+Replace everything inside `{{DOUBLE_BRACES}}` with your own content. Leave the structure intact — Claude relies on the section headers. Keep this file slim. Detail belongs in `about-me/`, not here.
 
 ---
 
@@ -21,15 +21,13 @@ The one-sentence version of my work: **{{YOUR_ELEVATOR_PITCH}}**.
 - **Format:** plain prose for explanations. Bullets only when I explicitly ask or the content is genuinely a list.
 - **Questions:** if my instruction is ambiguous, ask one specific clarifying question. Don't ask five.
 - **Spelling:** {{US_OR_UK_ENGLISH}}. No emoji unless I use one first.
+- **File references:** when you mention a file, show its path so I can open it.
 
 ---
 
-## Things to always do
+## Where my identity lives
 
-- At the start of every session, read every file in `about-me/` before you respond to my first message.
-- Save finished deliverables to `outputs/{{project-name}}/YYYY-MM-DD-{{slug}}.md`.
-- When referencing a file, show me its path so I can open it.
-- At the end of a working session, append a one-line entry to `about-me/memory.md` with what we did and any decision I made.
+My full identity, business context, and voice live in `about-me/`. **Skills load those files when they need them.** Do **not** pre-read `about-me/` on every turn — they only matter when a relevant skill fires.
 
 ---
 

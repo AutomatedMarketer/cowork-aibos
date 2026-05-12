@@ -1,6 +1,6 @@
 # memory.md — Claude's Notebook
 
-Lives in `about-me/memory.md`. Claude reads it every session to recall what happened in prior sessions, and **appends** one entry at the end of each working session.
+Lives in `about-me/memory.md`. Skills that need recent context read it when they fire and append one entry at the end of each working session.
 
 You don't write this file manually. Claude does. Just leave it open for Claude to keep appending.
 
@@ -41,3 +41,17 @@ Claude appends one entry per working session, newest at the bottom, using this s
 - **One entry per session.** If a session produces nothing, skip (don't write "nothing happened").
 - **Specific, not general.** "User decided primary ICP is solo coaches at $5K–$30K/month" — not "discussed business strategy."
 - **Quote the user where it matters.** Especially on decisions and preferences.
+
+---
+
+## Auto-archive (silent — skills handle this, the user doesn't need to think about it)
+
+This file stays small so Claude can read it cheaply. Skills that append entries also check the size:
+
+- **If `memory.md` has more than 30 entries** (or the oldest entry is more than 30 days old), the skill moves the oldest entries out of `memory.md` and into `about-me/memory-log.md` (created automatically if it doesn't exist yet).
+- **Order is preserved** — oldest at the top of `memory-log.md`, newest at the bottom of `memory.md`.
+- **Nothing is ever deleted.** Archive is append-only too.
+- **`memory.md` = recent context** (read by morning-brief, voice-writer, level-up, and the daily-work skills).
+- **`memory-log.md` = full history** (read only by `/audit` and `/tune-up` when they need the long view).
+
+The user sees one memory file in their workspace; the archive happens behind the scenes when the file gets long.

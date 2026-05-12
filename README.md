@@ -5,7 +5,7 @@
 **Build your personal AI Operating System inside Claude Cowork. One install. ~2 hours. Pays back every weekday morning, forever.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-0.8.0-brightgreen.svg)](https://github.com/automatedmarketer/cowork-ai-os/releases/latest)
+[![Version](https://img.shields.io/badge/version-0.9.0-brightgreen.svg)](https://github.com/automatedmarketer/cowork-ai-os/releases/latest)
 [![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Windows-lightgrey.svg)](#install)
 [![Plugin: Cowork](https://img.shields.io/badge/Claude%20Cowork-plugin-8A2BE2.svg)](https://code.claude.com/docs/en/plugin-marketplaces)
 
@@ -16,6 +16,8 @@
 ---
 
 Cowork AI OS is an open-source plugin that turns Claude Cowork into a configured AI teammate that knows your business, your voice, and your day. Built by [Nuno Tavares](https://nunomtavares.com) for VCI cohort students and anyone who wants to install AI infrastructure instead of bouncing between chat tabs.
+
+> **New in v0.9:** Progressive-disclosure architecture. Per-prompt "Start Up" latency drops from ~25s to under 3s; per-turn token overhead drops ~95%. Existing students upgrade with `/plugin update cowork-ai-os` then `/optimize`. See the [v0.9 architecture brief](cowork-ai-os/docs/architecture-v0.9.md) and the [speed-fix SOP](cowork-ai-os/docs/rollout-v0.9/SOP-speed-fix.md).
 
 ---
 
@@ -180,6 +182,7 @@ cowork-ai-os/                    ← the plugin
 │   ├── tune-up/                 "weekly tune-up" — 5-gate self-improvement
 │   ├── morning-brief/           Daily inbox + calendar brief
 │   ├── voice-writer/            Drafts in your voice
+│   ├── optimize/                "Cowork is slow" → diagnose + fix (v0.9 migration + evergreen speed tool)
 │   └── add-skill/               Hands off to Cowork's Skill Creator
 ├── CONNECTORS.md                Gmail + Calendar setup notes
 ├── LICENSE                      MIT

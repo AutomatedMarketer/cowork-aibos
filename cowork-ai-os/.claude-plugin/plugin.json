@@ -1,7 +1,7 @@
 {
   "name": "cowork-ai-os",
-  "version": "0.8.0",
-  "description": "Turn Claude Cowork into your AI operating system. Onboarding, daily brief with optional team comms (Slack/Discord/Telegram/Teams) + tasks, plan-then-approve file organization (/tidy-downloads with declared safe zones, never deletes, weekly schedule), voice writer, audit, and a weekly self-improvement loop bundled. Built by Nuno Tavares of Automated Marketer.",
+  "version": "0.9.0",
+  "description": "Turn Claude Cowork into your AI operating system. v0.9 progressive-disclosure architecture: slim Global Instructions, identity files loaded on-demand by skills, auto-archiving memory. Onboarding, daily brief with optional team comms (Slack/Discord/Telegram/Teams) + tasks, plan-then-approve file organization (/tidy-downloads with declared safe zones, never deletes, weekly schedule), voice writer, audit, weekly self-improvement loop, and /optimize speed-fix bundled. Built by Nuno Tavares of Automated Marketer.",
   "author": {
     "name": "Nuno Tavares"
   }
