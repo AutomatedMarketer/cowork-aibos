@@ -7,6 +7,65 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.10.0] — 2026-05-12
+
+### Added — Discovery layer: `/browse-skills` and `/browse-connectors`
+
+Two new conversational recommender skills that turn cowork-ai-os from a bundled toolkit into a true personal AI OS by helping users find and install the right community plugins and MCP connectors for their specific business.
+
+**`/browse-skills`** — reads `about-me/business-brain.md` and `about-me/about-me.md`, identifies the user's business type (coach, consultant, agency owner, creator, course creator, solopreneur, sales-led B2B), then returns 3 ranked recommendations from the bundled `skills-catalog.md`. Each recommendation includes a one-sentence reason tied to the user's stated business, a Cowork install command, and a concrete first-week use case. Walks the user through install if they pick one. Logs to `about-me/memory.md` with auto-archive. Catalog includes Anthropic's official role plugins (productivity, marketing, sales, customer-support), the built-in Cowork skills (Skill Creator, docx, pptx, canvas design), and a flagged CLI-only entry for claude-mem.
+
+**Trigger phrases:** `/browse-skills`, "what skills should I install", "what plugins do I need", "recommend skills for my business", "what should I add to Cowork".
+
+**`/browse-connectors`** — reads `about-me/connections.md` (current state) and `about-me/business-brain.md` (gaps + tools used), identifies which of the 7 Connection buckets are empty (Revenue, Customer, Calendar, Comms, Tasks, Meetings, Knowledge), then recommends 1–3 specific MCP connectors to fill the highest-leverage gap. Includes safe permission defaults for every recommendation (reads: Act without asking, writes: Ask before acting, destructive: Blocked). Catalog covers Stripe, GoHighLevel, HubSpot, Salesforce, ClickUp, Notion, Slack, Discord, Telegram, Microsoft Teams, Fathom, Fireflies, Google Drive, Obsidian, Confluence, and more — ~20 entries across all 7 buckets.
+
+**Trigger phrases:** `/browse-connectors`, "what connectors do I need", "recommend MCPs", "I want to connect my CRM/tasks/calendar", "what should I plug into Cowork".
+
+### Changed — `/level-up` now delegates to the new recommenders
+
+`/level-up` recommendations now branch across 6 forms. **Form B (add connector)** hands off to `/browse-connectors` with the bucket gap as context. **Form E (install community skill)** hands off to `/browse-skills` with the capability gap as context. **Form F (build custom skill)** hands off to `/add-skill` when nothing on the marketplace fits. Plus the original Forms A (build new skill), C (refine context file), and D (schedule routine). One recommendation per session, single-change cadence preserved.
+
+### Changed — `/onboard` Phase 5 (connectors) personalizes additional connector recommendations
+
+After enabling Gmail + Calendar (the universal must-haves), Phase 5 now reads the just-built `about-me/business-brain.md` and invokes `/browse-connectors` logic to recommend 1–2 additional connectors specific to the user's business. User can accept, save for later (logged to `connections.md` as "Connectors I want next" — surfaced by `/audit` and `/tune-up`), or skip. Skipped entirely if business-brain is thin.
+
+### Changed — `/onboard` Phase 7 (skills tour) recommends community plugins
+
+After demoing all 10 bundled skills (Skill Creator, docx, pptx, canvas design built-ins plus the now-10 cowork-ai-os skills), Phase 7 invokes `/browse-skills` logic to recommend 1–2 community plugins specific to the user's business. Optional install on the spot or defer to next week's tune-up. The phase's `skills-tour.md` log now includes `/optimize`, `/browse-skills`, and `/browse-connectors`.
+
+### Added — Bundled catalogs
+
+- `cowork-ai-os/skills/browse-skills/references/skills-catalog.md` — curated community plugins organized by business type, each entry with slug, what-it-does, best-for, install command, first-week use case, gotchas, anti-pattern, and last-verified date.
+- `cowork-ai-os/skills/browse-connectors/references/connectors-catalog.md` — MCP connectors organized by the 7 Connection buckets, each with bucket, what-it-does, add-it steps, what-you-unlock, first-week test, gotchas, permission defaults, last-verified date.
+
+Both catalogs follow the same schema for maintainability. Catalogs are refreshed at each plugin release. PRs welcome for new entries.
+
+### Added — Documentation
+
+- `cowork-ai-os/docs/architecture.md` — renamed from `architecture-v0.9.md`, now evergreen. Adds a section on the v0.10 discovery layer.
+- `cowork-ai-os/docs/skills-catalog-overview.md` — public-facing summary of what `/browse-skills` recommends.
+- `cowork-ai-os/docs/connectors-catalog-overview.md` — same for connectors.
+- `cowork-ai-os/docs/audit-v0.10.md` — one-time internal audit report from the v0.10 description / token review.
+- `cowork-ai-os/docs/rollout-v0.10/post-banner.md` — short announcement copy for course portal + community channels.
+
+### Backward compatibility
+
+- Existing v0.9 installs upgrade via `/plugin update cowork-ai-os` only — no migration needed. The two new skills add ~300 tokens of always-loaded metadata; everything else stays the same.
+- `/optimize` from v0.9 continues to work unchanged.
+- Memory hot/cold split from v0.9 unchanged.
+- Slim handbook from v0.9 unchanged.
+- No identity files (`about-me/*`) are touched by the upgrade.
+
+### Versioning
+
+Semver minor — new skills + new branching in existing skills, fully additive. No breaking changes.
+
+### Mac install note
+
+Same as v0.9 — `/plugin update cowork-ai-os` is unreliable on Mac due to Anthropic's open marketplace bugs. Mac users update by downloading the v0.10.0 `cowork-ai-os.zip` from the [release page](https://github.com/AutomatedMarketer/cowork-ai-os/releases/latest) and re-uploading via Settings → Customize → Browse plugins.
+
+---
+
 ## [0.9.0] — 2026-05-11
 
 ### Changed — BREAKING: progressive-disclosure architecture

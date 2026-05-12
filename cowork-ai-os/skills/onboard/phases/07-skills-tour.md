@@ -144,6 +144,66 @@ Say:
 
 Move on.
 
+### Skill 8: /optimize
+
+Say:
+
+> "**/optimize** — also works if you say **Cowork is slow** or **speed up Cowork**.
+>
+> This is your maintenance skill. If Cowork ever feels slow on startup (more than a couple of seconds before responses begin), run /optimize. It diagnoses two common causes (bloated handbook, oversized memory file), shows you what it'd fix, and only makes changes after you say yes. Always has a `rollback` option. You shouldn't need it often — but it's there. No demo needed; it's a fix-when-broken skill."
+
+Move on.
+
+### Skill 9: /browse-skills
+
+Say:
+
+> "**/browse-skills** — also works if you say **what skills should I install** or **what plugins do I need**.
+>
+> Reads your business-brain and recommends 3 specific community plugins or skills that would compound your operating system. Each recommendation has reasoning tied to your business plus an install command. We're going to run it for real in just a moment — sit tight."
+
+Move on. (We'll invoke it for real in Step 4.5 below.)
+
+### Skill 10: /browse-connectors
+
+Say:
+
+> "**/browse-connectors** — also works if you say **what connectors do I need** or **I want to connect my [tool]**.
+>
+> Looks at your connections.md and identifies which of the 7 Connection buckets are empty, then recommends the highest-leverage MCP connector to add. Includes the safe permission defaults so you don't accidentally grant write access to everything. We may not run this today — Phase 5 already handled the urgent recommendations. But it's there when you want to keep filling buckets later."
+
+Move on.
+
+---
+
+## Step 4.5 — Recommend 1–2 community plugins based on business-brain
+
+Now that the user has seen what's bundled, leverage business-brain to recommend what's NEXT.
+
+Invoke the **/browse-skills logic** (read `cowork-ai-os/skills/browse-skills/references/skills-catalog.md`). Pass the user's business-brain content as context. Return the top 1–2 recommendations (not 3 — keep this tight; we're inside onboard, not a dedicated session).
+
+Show them in the standard `/browse-skills` format:
+
+```
+### 1. [Plugin name]
+**What it does:** [...]
+**Why this for you:** [...]
+**Install:** [...]
+**First-week use case:** [...]
+```
+
+Then ask:
+
+> "Want to install [plugin name] now (5 min), save it for next week's tune-up, or skip entirely? Type **install**, **save**, or **skip**."
+
+If **install**: walk through the install. Test with the first-week use case.
+If **save**: append to `about-me/connections.md` under "Plugins I want next" (create section if needed). `/tune-up` will surface this later.
+If **skip**: no logging needed. Move on.
+
+If business-brain is thin (most fields empty or generic), skip Step 4.5 entirely. Note in `about-me/skills-tour.md`: "Plugin recommendations deferred — build out business-brain.md first."
+
+---
+
 ## Step 5 — Log the tour
 
 Write to `about-me/skills-tour.md`:
@@ -168,6 +228,9 @@ Write to `about-me/skills-tour.md`:
 | /morning-brief | "morning brief" | Daily brief from inbox + calendar |
 | /voice-writer | "write this in my voice" | Drafts in your voice with anti-AI pass |
 | /add-skill | "build me a new skill" | Hand off to Skill Creator |
+| /optimize | "Cowork is slow" | Diagnose + fix per-prompt slowdown; archive overflowed memory |
+| /browse-skills | "what skills should I install" | Recommend community plugins for your business |
+| /browse-connectors | "what connectors do I need" | Recommend MCP connectors to fill bucket gaps |
 
 You don't have to memorize these. Saying the plain English version works just as well as the slash command.
 ```

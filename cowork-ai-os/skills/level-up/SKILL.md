@@ -1,6 +1,6 @@
 ---
 name: level-up
-description: Finds the single highest-leverage thing to add to the user AI business operating system next. Asks 5 quick questions, then recommends ONE specific move. Different from /audit - audit measures, level-up recommends. Trigger when the user says what should I improve next, level up my Cowork AI OS, what is next, or types /level-up.
+description: Finds the single highest-leverage next move for the user's Cowork AI OS. Asks 5 quick questions, recommends ONE specific action across 6 forms — build a custom skill, install a community plugin (delegates to /browse-skills), enable an MCP connector (delegates to /browse-connectors), refine an about-me file, schedule a routine, or build via /add-skill. Different from /audit — audit measures the current state, level-up recommends the next concrete action. Trigger when the user says "/level-up", "what should I improve next", "what's the next step", "level up my Cowork AI OS", "what is next", "what's missing from my setup", "where should I focus this week", "give me one thing to do".
 ---
 
 # Level-Up — Find the Next Leverage Move
@@ -45,8 +45,10 @@ Look at all 5 answers. Pick the ONE that has the most leverage. Leverage = (impa
 ### Form A — Build a new skill
 > "Build a skill called `~~name`. It would: [specific input → specific output]. The skill would automate [the pain]. I'd hand off to /add-skill to actually build it. Want to do that now?"
 
-### Form B — Add a connector
-> "Connect [tool name] to Cowork. It would let me [specific capability]. Right now you're doing [X] manually because I can't see [tool]. Want me to walk you through enabling it?"
+### Form B — Add a connector (delegates to /browse-connectors)
+> "The highest-leverage gap is an empty Connection bucket — specifically [Bucket]. Right now you're doing [X] manually because I can't see [tool]. I'm going to hand off to `/browse-connectors`, which will recommend the specific MCP that fits your existing stack, walk you through enabling it with safe permissions, and confirm it works. Type **go** when you're ready, or **/browse-connectors** to do it yourself."
+
+When the user says **go**, invoke `/browse-connectors` with the bucket gap as context.
 
 ### Form C — Refine a context file
 > "Update `business-brain.md` to capture [specific gap, e.g. 'your new pricing structure for the Build-a-thon offer']. The drafts I generate will hit closer to your voice. Want to do it now?"
@@ -54,12 +56,31 @@ Look at all 5 answers. Pick the ONE that has the most leverage. Leverage = (impa
 ### Form D — Schedule a routine
 > "Add a scheduled task: `[name]`. It would fire [frequency] and do [specific thing]. Want to set it up?"
 
-### Form E — Install a complementary plugin
-> "Install Anthropic's `[plugin]` plugin. It would handle [the work]. Specifically helpful for your situation because [reference the user's context]. Want to walk through installing it?"
+### Form E — Install a complementary skill / plugin (delegates to /browse-skills)
+> "The highest-leverage gap is a missing capability — specifically [the thing they're doing manually]. There's likely a community skill or plugin that handles this. I'm going to hand off to `/browse-skills`, which reads your business-brain and returns 3 ranked recommendations with reasoning. Type **go** when you're ready, or **/browse-skills** to do it yourself."
+
+When the user says **go**, invoke `/browse-skills` with the gap as context.
+
+### Form F — Build a custom skill (delegates to /add-skill)
+> "Nothing on the marketplace covers this — it's specific to your workflow. I'll hand off to `/add-skill`, which interviews you and builds a custom slash command via the Skill Creator. Type **go** when ready."
+
+When the user says **go**, invoke `/add-skill`.
 
 ## Pick by leverage, not by ease
 
 Don't recommend the easiest thing. Recommend the most leveraged thing. The user can say "too big right now" and you'll downshift — but lead with the high-leverage move.
+
+## Choosing between the forms
+
+The 6 forms map to the 4 Cs:
+
+- **Form C (refine context file)** → if the gap is in **C1 Context** (about-me thin or stale).
+- **Form B (add connector)** → if the gap is in **C2 Connections** (a bucket is empty and would multiply existing skills).
+- **Forms E/F (install or build skill)** → if the gap is in **C3 Capabilities** (a workflow needs automation).
+- **Form A (build new skill)** → use Form A when the user's case is highly specific. Use Form E first when there's likely a marketplace skill that fits — `/browse-skills` will confirm.
+- **Form D (schedule a routine)** → if the gap is in **C4 Cadence** (manual rerunning of something that should fire automatically).
+
+When in doubt between Form A (build) and Form E (install), default to Form E — installing a verified community skill is faster and lower-risk than building from scratch. Build (Form A/F) only when nothing on the marketplace fits.
 
 ## After the recommendation
 

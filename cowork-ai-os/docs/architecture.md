@@ -1,4 +1,30 @@
-# What changed in v0.9 — and why
+# Cowork AI OS — architecture brief
+
+**TL;DR:** Cowork AI OS is a Claude Cowork plugin that turns Cowork into a personal AI operating system. As of v0.10 (May 2026) it bundles 14 skills, organized into onboarding, daily-work, evolution, maintenance, and discovery. Everything runs locally in Cowork — no hooks, no local MCP servers, no background processes. Self-installed, self-onboarding.
+
+This doc explains how the pieces fit together, the architectural principles behind it, and what changed in each major version.
+
+---
+
+## v0.10 — the discovery layer (May 2026)
+
+The big v0.10 question: is cowork-ai-os actually best-in-class, or just unbloated? Research showed the architecture was sound but missing one thing — a way to help users find and install the OTHER skills + MCP connectors that would compound the personal-AI-OS effect.
+
+v0.10 adds two conversational recommender skills:
+
+- **`/browse-skills`** — reads your business-brain, returns 3 ranked plugin/skill recommendations from a curated catalog of community and Anthropic-official options. Each with reasoning tied to your business, an install command, and a first-week use case.
+- **`/browse-connectors`** — reads your `connections.md` and identifies which of the 7 Connection buckets (Revenue, Customer, Calendar, Comms, Tasks, Meetings, Knowledge) are empty. Recommends 1–3 MCP connectors to fill the highest-leverage gap, with safe permission defaults baked in.
+
+Plus integrations:
+- `/level-up` now branches into 6 forms — including delegating to `/browse-skills` (Form E) and `/browse-connectors` (Form B) when those are the highest-leverage gap.
+- `/onboard` Phase 5 (connectors) — after Gmail+Calendar, invokes `/browse-connectors` logic to personalize additional connector recommendations from the just-built business-brain.
+- `/onboard` Phase 7 (skills tour) — after demoing bundled skills, invokes `/browse-skills` logic to recommend 1–2 community plugins specific to the user's business.
+
+The catalogs are bundled markdown (no remote hosting, no API dependencies) and refreshed each plugin release. PRs welcome.
+
+---
+
+## v0.9 — the speed fix (May 11, 2026)
 
 **TL;DR:** Cowork was slow because v0.8 told Claude to re-read your entire identity folder on every prompt. v0.9 stops that. Your "Start Up" time drops from ~25 seconds to under 3.
 
