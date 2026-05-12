@@ -47,18 +47,20 @@ start onboarding
 
 ## What's bundled
 
-8 core skills:
+10 core skills:
 
 | Slash command | Plain English | What it does |
 |---|---|---|
 | `/onboard` | "start onboarding" | The 9-phase install. Resumable from any phase. |
 | `/audit` | "check my system" | 4 C's audit. Score 0-100. Top 3 gaps. |
-| `/level-up` | "what should I improve next" | 5 questions → one specific recommendation |
+| `/level-up` | "what should I improve next" | 5 questions → one specific recommendation across 6 forms (refine context, add connector, install skill, build skill, schedule routine) |
 | `/tune-up` | "weekly tune-up" | The 5-gate self-improvement loop |
 | `/morning-brief` | "morning brief" | Calendar + inbox + priorities, every morning |
 | `/voice-writer` | "write this in my voice" | Drafts anything using `writing-rules.md` |
 | `/add-skill` | "build me a new skill" | Hands off to Cowork's Skill Creator with a spec |
-| `/optimize` | "Cowork is slow" | Diagnoses workspace bloat (old handbook directive, memory overflow) and fixes it. Use any time per-prompt latency creeps up. **New in v0.9.** |
+| `/optimize` | "Cowork is slow" | Diagnoses workspace bloat (old handbook directive, memory overflow) and fixes it. Use any time per-prompt latency creeps up. **v0.9.** |
+| `/browse-skills` | "what skills should I install" | Reads your business-brain, recommends 3 community plugins with reasoning + install. **New in v0.10.** |
+| `/browse-connectors` | "what connectors do I need" | Identifies empty buckets, recommends MCP connectors with safe permission defaults. **New in v0.10.** |
 
 Plus three operational skills layered on top: `/tidy-downloads` (plan-then-approve file organization), `/onboard-daily-brief` (Project 02 add-on), `/onboard-file-organization` (Project 03 add-on), and the `brief-source-comms` helper for team comms (Slack/Discord/Telegram/Teams).
 
@@ -102,7 +104,8 @@ You're done. Cowork AI OS will:
 - Generate your morning brief every morning at the time you picked
 - Run the weekly tune-up every week at the time you picked, walking you through one specific improvement
 - Apply your voice rules to anything it drafts
-- Load your identity files (`about-me/`) **on demand** — skills that need them read them when they fire, not on every prompt (this is what makes v0.9 fast)
+- Load your identity files (`about-me/`) **on demand** — skills that need them read them when they fire, not on every prompt (v0.9)
+- Recommend new community skills and MCP connectors over time, personalized to your business (v0.10 — run `/browse-skills` and `/browse-connectors` any time)
 
 Look at `about-me/audit-log.md` once a month to watch your score climb. If Cowork ever starts feeling slow on startup, type `/optimize` and follow the prompts.
 

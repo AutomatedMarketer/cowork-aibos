@@ -88,13 +88,29 @@ Wait for `yes`. Then create the recurring event:
 
 Show the event details before creating. Click Allow once.
 
-## Step 6 — Optional: other connectors
+## Step 6 — Recommend 1–2 additional connectors based on business-brain
 
-Read the user's `connections.md`. For any tool they listed in another bucket that has an obvious Cowork connector (Slack, Notion, Google Drive, Fireflies), mention it:
+Now leverage the work the user just did in Phase 3 (business-brain.md). Read it. Then read the just-built `about-me/connections.md` to see which buckets they actually filled vs which are still "none."
 
-> "You said you use [Slack] for Comms. There's a Cowork connector for it — we can enable now or later. Later means we'll cover it in next week's tune-up. Now or later?"
+For each empty or stub bucket, identify the highest-leverage gap by combining business-brain context with what the user said. Pick the 1–2 most impactful additions.
 
-Don't push. If they say "later," note it in `connections.md` under "Connectors I want next."
+Then invoke the **/browse-connectors logic** (read `cowork-ai-os/skills/browse-connectors/references/connectors-catalog.md` for the canonical recommendations per bucket). For the recommended bucket(s), pick the connector that matches the user's existing tools (per business-brain).
+
+Show the recommendation in this format:
+
+> "Based on what you just told me about your business, the highest-leverage connector to add next is **[connector name] (bucket: [Bucket])**.
+>
+> **Why:** [1 sentence tying to business-brain — e.g. 'You said your #1 time sink is replying to discovery-call follow-ups, and a Meetings connector lets `/voice-writer` pull yesterday's transcripts to draft accurate follow-ups in your voice.']
+>
+> **What you unlock:** [Concrete capability — e.g. '/morning-brief' gains a Tasks section pulling overdue items from your tracker.]
+>
+> **Want to add it now?** (~5 min, same flow as Gmail/Calendar above) or **save it for next week's tune-up**?"
+
+If they say **add now**: walk them through the same Cowork → Settings → Customize → Add connector flow as Gmail/Calendar. Apply the same safe permission defaults (reads: act, writes: ask, destructive: blocked).
+
+If they say **save for later**: note it in `connections.md` under a new "Connectors I want next" section with the bucket name, the recommended option, the business-brain reason. `/audit` and `/tune-up` will surface this list later.
+
+If business-brain is thin (no clear pain points or tools mentioned), skip Step 6 entirely. Don't force a recommendation. Note in `connections.md`: "Recommendations deferred — build out business-brain.md first."
 
 ## Step 7 — Log and advance
 

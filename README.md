@@ -5,7 +5,7 @@
 **Build your personal AI Operating System inside Claude Cowork. One install. ~2 hours. Pays back every weekday morning, forever.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-0.9.0-brightgreen.svg)](https://github.com/automatedmarketer/cowork-ai-os/releases/latest)
+[![Version](https://img.shields.io/badge/version-0.10.0-brightgreen.svg)](https://github.com/automatedmarketer/cowork-ai-os/releases/latest)
 [![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Windows-lightgrey.svg)](#install)
 [![Plugin: Cowork](https://img.shields.io/badge/Claude%20Cowork-plugin-8A2BE2.svg)](https://code.claude.com/docs/en/plugin-marketplaces)
 
@@ -17,7 +17,9 @@
 
 Cowork AI OS is an open-source plugin that turns Claude Cowork into a configured AI teammate that knows your business, your voice, and your day. Built by [Nuno Tavares](https://nunomtavares.com) for VCI cohort students and anyone who wants to install AI infrastructure instead of bouncing between chat tabs.
 
-> **New in v0.9:** Progressive-disclosure architecture. Per-prompt "Start Up" latency drops from ~25s to under 3s; per-turn token overhead drops ~95%. Existing students upgrade with `/plugin update cowork-ai-os` then `/optimize`. See the [v0.9 architecture brief](cowork-ai-os/docs/architecture-v0.9.md) and the [speed-fix SOP](cowork-ai-os/docs/rollout-v0.9/SOP-speed-fix.md).
+> **New in v0.10:** Discovery layer. `/browse-skills` recommends community plugins for your business. `/browse-connectors` recommends MCP connectors to fill the gaps in your 7-bucket setup. Both read your `about-me/business-brain.md` and return ranked picks with reasoning + install instructions. Plus `/onboard` Phases 5 + 7 now invoke the recommenders to personalize your setup from day one. See the [architecture brief](cowork-ai-os/docs/architecture.md) and the [v0.10 rollout post](cowork-ai-os/docs/rollout-v0.10/post-banner.md).
+>
+> **From v0.9 (still live):** Progressive-disclosure architecture. Per-prompt "Start Up" latency under 3s. Auto-archiving memory. `/optimize` available any time Cowork feels slow.
 
 ---
 
@@ -136,6 +138,8 @@ start onboarding
 
 The 9-phase walkthrough begins.
 
+> **What `/onboard` enables for you (no manual setup required):** Phase 7 toggles ON four built-in Cowork skills that the plugin depends on — **Skill Creator** (required: this is what `/add-skill` hands off to when you build custom skills), **docx** (Word documents), **pptx** (slide decks), and **canvas-design** (visual outputs). You don't need to install these separately. They ship with Cowork; `/onboard` just walks you through enabling them in Settings → Customize. Skill Creator in particular is the foundation for everything Cowork AI OS does to evolve with your business — make sure it stays toggled on.
+
 ---
 
 ## ✅ Mac install (recommended): zip upload
@@ -183,6 +187,8 @@ cowork-ai-os/                    ← the plugin
 │   ├── morning-brief/           Daily inbox + calendar brief
 │   ├── voice-writer/            Drafts in your voice
 │   ├── optimize/                "Cowork is slow" → diagnose + fix (v0.9 migration + evergreen speed tool)
+│   ├── browse-skills/           "what skills should I install" → 3 ranked picks for your business (v0.10)
+│   ├── browse-connectors/       "what connectors do I need" → recommend MCPs to fill bucket gaps (v0.10)
 │   └── add-skill/               Hands off to Cowork's Skill Creator
 ├── CONNECTORS.md                Gmail + Calendar setup notes
 ├── LICENSE                      MIT
@@ -225,6 +231,18 @@ Update Claude Desktop to the latest version. The plugin commands ship with Cowor
 
 ### Plugin installs but skills don't load
 Open a fresh Cowork task — skills load on session start. If still failing, see [#39274](https://github.com/anthropics/claude-code/issues/39274) (Anthropic-side issue).
+
+### Claude Desktop fails silently on Windows after a Malwarebytes / antivirus conflict
+**Known Anthropic-side bug, reported May 2026.** Malwarebytes Real-Time Monitoring (and possibly other active antivirus tools) can conflict with Claude Desktop and set an internal flag that **doesn't clear after the conflict is resolved**. Symptom: Claude Desktop runs but fails silently — prompts go nowhere, no error message. Workaround:
+
+1. Manually clear the Claude Desktop flag (close Claude Desktop fully via tray icon → Quit; restart).
+2. If the issue persists, disable the conflicting AV's real-time monitoring, restart Claude Desktop, then re-enable.
+3. The student who reported this resolved it by switching to **Windows Defender only** (removing Malwarebytes' real-time component).
+
+A bug report has been sent to Anthropic. Track it on the [cowork-ai-os GitHub issues](https://github.com/AutomatedMarketer/cowork-ai-os/issues) — search for "Malwarebytes" or "silent fail."
+
+### Cowork feels slow on startup (>3s before any response)
+Run `/optimize` inside Cowork. It diagnoses two common causes (legacy v0.8 handbook directive, memory file overflow), shows you what it'll fix, and waits for your "yes" before making changes. Has a `rollback` option. Should not be necessary on a fresh v0.9+ install — but if you're upgrading from v0.7 or v0.8, this is the right tool.
 
 ### Install hangs at any phase
 Type `pause onboarding`, close the task, open a fresh task, type `continue onboarding`. Cowork AI OS picks up where you left off — your `about-me/`, `outputs/`, and `_aibos/state.md` survive across sessions.
