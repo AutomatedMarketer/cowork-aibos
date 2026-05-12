@@ -47,6 +47,8 @@ Both catalogs follow the same schema for maintainability. Catalogs are refreshed
 - `cowork-ai-os/docs/connectors-catalog-overview.md` — same for connectors.
 - `cowork-ai-os/docs/audit-v0.10.md` — one-time internal audit report from the v0.10 description / token review.
 - `cowork-ai-os/docs/rollout-v0.10/post-banner.md` — short announcement copy for course portal + community channels.
+- **README — Skill Creator emphasis.** Added a callout under "Step 4 — Start onboarding" explaining that Phase 7 toggles ON Skill Creator + docx + pptx + canvas-design (the built-in Cowork skills the plugin depends on). Students now know to expect this and why Skill Creator specifically is foundational.
+- **README — new troubleshooting entries.** Added a row for the Malwarebytes Real-Time Monitoring conflict with Claude Desktop on Windows (reported by a student in May 2026 — Anthropic-side bug that sets a flag that doesn't clear, causing Claude to fail silently). Workaround: clear the flag manually, optionally switch to Windows Defender only. Also added a row pointing users at `/optimize` if Cowork feels slow on startup.
 
 ### Backward compatibility
 

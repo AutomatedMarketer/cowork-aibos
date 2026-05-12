@@ -138,6 +138,8 @@ start onboarding
 
 The 9-phase walkthrough begins.
 
+> **What `/onboard` enables for you (no manual setup required):** Phase 7 toggles ON four built-in Cowork skills that the plugin depends on — **Skill Creator** (required: this is what `/add-skill` hands off to when you build custom skills), **docx** (Word documents), **pptx** (slide decks), and **canvas-design** (visual outputs). You don't need to install these separately. They ship with Cowork; `/onboard` just walks you through enabling them in Settings → Customize. Skill Creator in particular is the foundation for everything Cowork AI OS does to evolve with your business — make sure it stays toggled on.
+
 ---
 
 ## ✅ Mac install (recommended): zip upload
@@ -229,6 +231,18 @@ Update Claude Desktop to the latest version. The plugin commands ship with Cowor
 
 ### Plugin installs but skills don't load
 Open a fresh Cowork task — skills load on session start. If still failing, see [#39274](https://github.com/anthropics/claude-code/issues/39274) (Anthropic-side issue).
+
+### Claude Desktop fails silently on Windows after a Malwarebytes / antivirus conflict
+**Known Anthropic-side bug, reported May 2026.** Malwarebytes Real-Time Monitoring (and possibly other active antivirus tools) can conflict with Claude Desktop and set an internal flag that **doesn't clear after the conflict is resolved**. Symptom: Claude Desktop runs but fails silently — prompts go nowhere, no error message. Workaround:
+
+1. Manually clear the Claude Desktop flag (close Claude Desktop fully via tray icon → Quit; restart).
+2. If the issue persists, disable the conflicting AV's real-time monitoring, restart Claude Desktop, then re-enable.
+3. The student who reported this resolved it by switching to **Windows Defender only** (removing Malwarebytes' real-time component).
+
+A bug report has been sent to Anthropic. Track it on the [cowork-ai-os GitHub issues](https://github.com/AutomatedMarketer/cowork-ai-os/issues) — search for "Malwarebytes" or "silent fail."
+
+### Cowork feels slow on startup (>3s before any response)
+Run `/optimize` inside Cowork. It diagnoses two common causes (legacy v0.8 handbook directive, memory file overflow), shows you what it'll fix, and waits for your "yes" before making changes. Has a `rollback` option. Should not be necessary on a fresh v0.9+ install — but if you're upgrading from v0.7 or v0.8, this is the right tool.
 
 ### Install hangs at any phase
 Type `pause onboarding`, close the task, open a fresh task, type `continue onboarding`. Cowork AI OS picks up where you left off — your `about-me/`, `outputs/`, and `_aibos/state.md` survive across sessions.
