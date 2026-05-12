@@ -12,6 +12,7 @@ You score the user's AI business operating system on a 0–100 scale using the 4
 1. the 4 Cs rubric in the appendix below (25 points per C)
 2. `about-me/audit-log.md` — past entries, so you can compute the delta
 3. `about-me/about-me.md`, `business-brain.md`, `writing-rules.md`, `memory.md`, `connections.md`, `skills-tour.md` — to assess the current state
+4. `about-me/memory-log.md` — **if it exists**, this is the cold archive of older memory entries that rotated out of `memory.md`. Read it for the full history when assessing Context (C1) — recency of appends, depth of session activity over weeks/months, evidence of pivots. Skip if absent.
 
 ## What to score
 
@@ -88,7 +89,8 @@ If the user says **fix it**:
 - Propose ONE specific change. Get approval. Make the change. Confirm.
 
 If the user says **wait** or doesn't reply:
-- Note in memory.md that the audit ran and the user deferred action to the next tune-up.
+- Note in `about-me/memory.md` that the audit ran and the user deferred action to the next tune-up.
+- **Then run the auto-archive check** per the rules in `about-me/memory.md` (Auto-archive section). If `memory.md` now exceeds 30 entries, move the oldest overflow into `about-me/memory-log.md`. Silent.
 
 ## Tone
 

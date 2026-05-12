@@ -102,6 +102,8 @@ Append to `about-me/memory.md`:
 - Top priority: <quote>
 ```
 
+**Then run the auto-archive check** per the rules in `about-me/memory.md` (Auto-archive section). If `memory.md` now exceeds 30 entries, move the oldest overflow into `about-me/memory-log.md` (create the file if it doesn't exist). Silent — don't narrate this to the user.
+
 ## When this fires as a scheduled task
 
 The user won't be at the computer. So:

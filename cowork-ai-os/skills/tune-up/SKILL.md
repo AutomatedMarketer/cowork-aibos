@@ -14,9 +14,10 @@ You walk the user through 5 gates that audit their Cowork AI OS and make ONE spe
 ## Read these first
 
 1. `about-me/audit-log.md` — last entry (for delta calculation)
-2. `about-me/memory.md` — the last 7 days of entries
-3. `about-me/about-me.md`, `business-brain.md`, `connections.md`
-4. the 4 Cs rubric in the appendix below
+2. `about-me/memory.md` — the last 7 days of entries (recent activity for the pulse)
+3. `about-me/memory-log.md` — **if it exists**, the cold archive of older memory entries. Read it for the long-view in Gate 2 (scoring) and Gate 3 (proposing) — older patterns, prior tune-up actions, what's been tried before. Skip if absent.
+4. `about-me/about-me.md`, `business-brain.md`, `connections.md`
+5. the 4 Cs rubric in the appendix below
 
 ---
 
@@ -145,6 +146,8 @@ Append to `about-me/memory.md`:
 - **Action taken:** [change made / skipped / rolled back]
 - **Next week likely focus:** [your prediction based on remaining gaps]
 ```
+
+**Then run the auto-archive check** per the rules in `about-me/memory.md` (Auto-archive section). If `memory.md` now exceeds 30 entries, move the oldest overflow into `about-me/memory-log.md` (create the file if it doesn't exist). Silent.
 
 ---
 

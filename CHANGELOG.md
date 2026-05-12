@@ -7,6 +7,94 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.9.0] — 2026-05-11
+
+### Changed — BREAKING: progressive-disclosure architecture
+
+The handbook directive that pre-loaded every file in `about-me/` on every turn is **removed**. That single directive was responsible for ~20+ seconds of "Start Up" latency per prompt in Claude Cowork. Identity files are now loaded only by the skills that need them at runtime — which they already do; the pre-load was redundant.
+
+**What this means for you:**
+
+- **Per-prompt "Start Up" latency drops from ~23–25 seconds to under 3 seconds** on typical installs.
+- **Per-turn token overhead drops ~95%** (from ~11,000 tokens of pre-loaded identity context to ~300 tokens of slim handbook). The savings grow over time as memory accumulates.
+- Your identity files (`about-me/about-me.md`, `business-brain.md`, `writing-rules.md`, `memory.md`, `connections.md`, `audit-log.md`, `brief-preferences.md`) are **untouched**. Skills still read them — just on-demand, when relevant.
+
+### Added — Memory auto-archive (silent hot/cold split)
+
+`about-me/memory.md` now auto-archives at 30 entries. Older entries move to `about-me/memory-log.md` (created automatically on first overflow), preserving the full history. Nothing is ever deleted.
+
+- **Hot file (`memory.md`)** — last 30 entries, ~500 tokens max. Read by `morning-brief`, `voice-writer`, `level-up`, and other daily-work skills.
+- **Cold archive (`memory-log.md`)** — full append-only history. Read **only** by `/audit` and `/tune-up` when they need the long view.
+- The rotation is silent — students see one memory file in their workspace and don't need to think about it.
+
+This caps the always-loaded surface at ~500 tokens regardless of how long the student has been using the system. Previously, `memory.md` grew unbounded (~7,500 tokens after 6 months of daily use, still loaded on every relevant skill invocation).
+
+### Added — `/optimize` skill (evergreen speed-fix)
+
+New skill at `skills/optimize/SKILL.md`. Works two ways:
+
+1. **One-time migration** for students upgrading from v0.8 or earlier: detects the old handbook directive in their workspace `claude.md`, rewrites it to the new slim handbook with all their existing answers preserved, guides them through pasting the new version into Cowork → Settings → Global instructions, and archives any memory overflow. Backups go to `_aibos/backups/`; `rollback` restores them.
+2. **Ongoing speed tool** for any student whose Cowork starts feeling slow later: diagnoses handbook + memory state, applies fixes, archives overflow.
+
+**Trigger phrases:** `/optimize`, "Cowork is slow", "speed up Cowork", "fix slowness", "Claude is slow", "decrease tokens", "every prompt takes forever", "Start Up takes too long".
+
+The skill is plan-then-approve — it never edits files without showing the diagnosis and waiting for "yes".
+
+### Changed — Slim handbook template
+
+The Phase 1 handbook template at `skills/onboard/templates/claude-md.md` is now under ~300 tokens (down from ~450 + the bloat caused by the pre-read directive). The deleted `## Things to always do` section is replaced by a new `## Where my identity lives` section that explicitly tells Claude **not** to pre-read `about-me/` on every turn.
+
+New students running `/onboard` get the new architecture from day one — no extra steps.
+
+### Changed — Memory-aware skills
+
+The following skills now run an auto-archive check after appending to `about-me/memory.md`:
+
+- `morning-brief` — appends the daily brief entry, then archives overflow.
+- `voice-writer` — appends the draft entry (for longer pieces), then archives overflow.
+- `tune-up` — appends the weekly tune-up entry, then archives overflow.
+- `audit` — appends the deferred-action note (when user says "wait"), then archives overflow.
+
+`audit` and `tune-up` also now read `about-me/memory-log.md` (the cold archive) when assessing Context (C1) and reviewing prior tune-up actions, so the full history is available to them.
+
+### Migration path for existing users
+
+Just a few students installed v0.7 / v0.8. The fix path:
+
+1. **Update the plugin** — type `/plugin update cowork-ai-os` in Cowork.
+2. **Run `/optimize`** — follow the on-screen prompts.
+3. **Paste the new handbook** into Cowork → Settings → Cowork → Global instructions when prompted.
+4. **Test** — send any short prompt. "Start Up" should drop from ~25s to under 3s.
+5. **If anything looks wrong**, type `rollback`.
+
+In-flight scheduled tasks (`/morning-brief`, `/tune-up`, weekly `/tidy-downloads`) keep firing through the migration — they're not affected.
+
+### Not in v0.9 (deferred to v1.0 backlog)
+
+- `/recall` skill (semantic memory search) — deferred.
+- `/connect-comms` skill (toggle Slack/Discord MCPs) — handshake is only ~2–4s of the 23s; not the main culprit. Deferred.
+- Auto-detection that proactively suggests `/optimize` mid-skill — direct comms (email + post + SOP) is sufficient given the small installed base.
+
+### Mac install note
+
+Same as v0.8.x — `/plugin update cowork-ai-os` is unreliable on Mac due to Anthropic's open marketplace bugs (#26951, #28125, #27196 closed not-planned). Mac users update by downloading the v0.9.0 `cowork-ai-os.zip` from the [release page](https://github.com/AutomatedMarketer/cowork-ai-os/releases/latest) and re-uploading via Settings → Customize → Browse plugins. User workspace files survive the re-upload.
+
+---
+
+## [0.8.1] — 2026-05-11
+
+### Fixed — Consistency fixes from internal audit
+
+Five findings from a Bugbot-style logic & consistency review. None are security issues; #1 is the only one that breaks user behavior.
+
+1. **Field-name mismatch (the breaking one).** P01 onboarding writes `install_complete: true` at completion, but P02 (`onboard-daily-brief`) and P03 (`onboard-file-organization`) both checked for `core_setup_complete: true` — a field that was never written anywhere. Every user finishing P01 and trying P02 or P03 would be told "run /onboard first" forever. Six reads changed to use the field P01 actually writes (`install_complete`), across SKILL.md and 00-welcome.md in both onboard-daily-brief and onboard-file-organization.
+2. **7-phase vs 9-phase inconsistency.** `/onboard` expanded from 7 phases to 9 in an earlier release, but four user-facing locations still said "7-phase install" (07-skills-tour.md intro + skills-tour log template; 09-verify.md final memory.md entry; cowork-ai-os/README.md badge + phase enumeration + "Phase 5" cross-reference now Phase 7). The user-facing `memory.md` and `skills-tour.md` will now record the correct phase count.
+3. **Q6 and Q7 collected but never read.** `onboard-daily-brief` Phase 1 collects Q6 (90-day outcome ranking lens) and Q7 (priority-line tone refinement) and writes them to state — but `morning-brief/SKILL.md` only handled Q4, Q5, and Q8. Added explicit read entries and matching rule entries: Q6 applied to inbox ordering / quick-win selection / priority-line choice; Q7 applied to priority-line tone/cadence. Falls back to P01 defaults when either is absent.
+4. **Wrong phase number in Phase 9 state update.** Phase 9 (verify) wrote `phases.7.status: complete` when marking install done — an off-by-two from the 7→9 phase expansion. Fixed to `phases.9.status: complete`.
+5. **Stale version badge.** Outer README showed v0.5.2; current version was v0.8.0. Badge bumped.
+
+---
+
 ## [0.8.0] — 2026-05-09
 
 ### Changed — BREAKING: full rebrand to Cowork AI OS

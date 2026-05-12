@@ -105,6 +105,8 @@ Whenever you save, append to memory.md:
 - **Iterations:** [N before user approved]
 ```
 
+**Then run the auto-archive check** per the rules in `about-me/memory.md` (Auto-archive section). If `memory.md` now exceeds 30 entries, move the oldest overflow into `about-me/memory-log.md` (create the file if it doesn't exist). Silent — don't narrate this to the user.
+
 ## Tone
 
 Be confident. The user trusted you with their voice — own it. Don't say "I tried to capture your voice" or "let me know if this is close." Just deliver. If they want changes, they'll tell you.
