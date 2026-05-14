@@ -5,7 +5,7 @@
 **Build your personal AI Operating System inside Claude Cowork. One install. ~2 hours. Pays back every weekday morning, forever.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-0.10.0-brightgreen.svg)](https://github.com/automatedmarketer/cowork-ai-os/releases/latest)
+[![Version](https://img.shields.io/badge/version-0.10.2-brightgreen.svg)](https://github.com/automatedmarketer/cowork-ai-os/releases/latest)
 [![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Windows-lightgrey.svg)](#install)
 [![Plugin: Cowork](https://img.shields.io/badge/Claude%20Cowork-plugin-8A2BE2.svg)](https://code.claude.com/docs/en/plugin-marketplaces)
 

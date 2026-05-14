@@ -1,7 +1,7 @@
 {
   "name": "cowork-ai-os",
-  "version": "0.10.1",
-  "description": "Turn Claude Cowork into your AI operating system. v0.10 adds a discovery layer (/browse-skills and /browse-connectors) that recommends the right community plugins and MCP connectors for the user's specific business. Bundled: 9-phase onboarding, daily brief with optional team comms (Slack/Discord/Telegram/Teams) and tasks, plan-then-approve file organization (/tidy-downloads — never deletes), voice writer with anti-AI kill list, 4 Cs audit, weekly self-improvement loop, /optimize speed-fix, plus auto-archiving memory. Self-installed and self-onboarding. Built by Nuno Tavares of Automated Marketer.",
+  "version": "0.10.2",
+  "description": "Turn Claude Cowork into your AI business operating system. Onboarding, daily brief with optional team comms + tasks, plan-then-approve file organization (/tidy-downloads — never deletes), voice writer, audit, weekly self-improvement loop. v0.10 added discovery (/browse-skills and /browse-connectors with /level-up branching). v0.10.2 adds live-fetch from Anthropic's public Connectors directory (claude.com/connectors) and Plugin/Skill marketplaces (anthropics/claude-plugins-official + anthropics/skills) so recommendations stay current — no more stale bundled catalogs. /tune-up now surfaces what's new in the directories since your last tune-up.",
   "author": {
     "name": "Nuno Tavares"
   }
