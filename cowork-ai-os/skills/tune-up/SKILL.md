@@ -69,7 +69,50 @@ Wait for `continue`.
 
 ## GATE 3 — PROPOSE
 
-Pick exactly ONE improvement. Pick the form that fits the gap:
+Before picking a form, run the **"What's new since last tune-up?"** check (v0.10.2) below — it can surface a new connector or skill that's a better fit than anything currently on the table. Then pick exactly ONE improvement using the forms that follow.
+
+### What's new since last tune-up? (v0.10.2)
+
+Before offering form (b) build a new skill or form (c) add a connector, check what's NEW in the official Anthropic directories since the last tune-up.
+
+**Procedure:**
+
+1. **Find the last tune-up date** — read `about-me/memory.md` for the most recent entry containing "tune-up". If never run before, use 30 days ago as the baseline.
+
+2. **Live-fetch both directories in parallel:**
+   - Connectors: follow [`../browse-connectors/lib/fetch-live-catalog.md`](../browse-connectors/lib/fetch-live-catalog.md) — fetches `https://claude.com/connectors`
+   - Skills/Plugins: follow [`../browse-skills/lib/fetch-live-catalog.md`](../browse-skills/lib/fetch-live-catalog.md) — fetches the two anthropics/* marketplace.json files
+
+3. **Identify "new since last tune-up":** any connector or plugin that has a "New" badge OR was first listed after the last tune-up date. (For the JSON marketplace files, "New since last tune-up" means added since the last commit hash we saw — if uncertain, use last-7-days as a safe heuristic.)
+
+4. **Cross-reference with `about-me/business-brain.md`** to score newness × relevance. A "New" coffee-business connector matters to a coach who serves coffee shops; a "New" legal connector doesn't.
+
+5. **Surface to user IN GATE 3 (before forms b/c):**
+
+   > "**What's new in Anthropic's directories since your last tune-up:**
+   > - **<Connector Name>** ([link](https://claude.com/connectors/<slug>)) — <one-sentence why this might fit your business>
+   > - **<Plugin Name>** — <one-sentence why this might fit your business>
+   >
+   > Want to install any of these? Or should we skip to the rest of Gate 3?"
+
+6. **Honor user's answer.** If they want one, branch into form (c) (connector) or form (b) (build/install a skill) using the live-fetched details. If they say skip, log it and proceed to the rest of Gate 3.
+
+7. **Log the result** — append a one-line entry to `about-me/memory.md`:
+   ```
+   YYYY-MM-DD: tune-up surfaced N new directory items, M accepted
+   ```
+
+**If live fetch fails:**
+
+Skip this step gracefully. Don't block the rest of /tune-up. Tell the user: "Live directory check unavailable — skipping the 'what's new' step. We can still walk through forms (b) and (c) using the bundled snapshot."
+
+**Why this step exists (v0.10.2 rationale):**
+
+Anthropic adds 5-20 new connectors per week. Without this check, /tune-up only proposes from a stale bundled snapshot. With it, /tune-up becomes the weekly habit that keeps the user's stack current — without making them browse the directory themselves.
+
+---
+
+### Forms — pick the one that fits the gap
 
 ### (a) Update an existing **custom** skill
 The user's own skills, built via `/add-skill`. NOT Cowork AI OS's bundled skills — those are read-only and update only when the Cowork AI OS plugin updates. Show before/after diff of the SKILL.md or referenced file.
