@@ -15,6 +15,12 @@ You read the user's identity and business context, then recommend **3 specific c
 2. `about-me/business-brain.md` — what they sell, who they serve, their #1 priority right now.
 3. `references/skills-catalog.md` (in this skill's folder) — the bundled catalog of community plugins and skills, organized by business type.
 
+**v0.10.2 update: live-fetch the marketplaces before falling back to the bundled snapshot.**
+
+Before reading `references/skills-catalog.md`, follow the procedure in [`lib/fetch-live-catalog.md`](lib/fetch-live-catalog.md). Try live fetches from BOTH `anthropics/claude-plugins-official` and `anthropics/skills` marketplace.json files first. Fall back to the bundled snapshot ONLY if the live fetches fail. Tell the user which source the recommendations came from.
+
+The bundled snapshot at `references/skills-catalog.md` remains in place as the offline fallback — but it is no longer the primary source. Also: cross-reference with `~/.claude/plugins/installed_plugins.json` (when available) so we don't recommend plugins the user already has.
+
 If `about-me/about-me.md` or `about-me/business-brain.md` is missing or has unfilled placeholders, stop and tell the user: *"I need your `about-me/` files filled in before I can recommend anything specific. Run `/onboard` first (or run `/audit` to see what's missing)."*
 
 ## The flow
