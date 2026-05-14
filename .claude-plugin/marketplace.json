@@ -7,7 +7,7 @@
     {
       "name": "cowork-ai-os",
       "source": "./cowork-ai-os",
-      "description": "Turn Claude Cowork into your AI operating system. v0.10 adds /browse-skills and /browse-connectors — conversational recommenders that pick the right plugins and MCP connectors for your business. Plus onboarding, daily brief, voice writer, audit, weekly self-improvement, plan-then-approve file organization, and /optimize speed-fix."
+      "description": "Turn Claude Cowork into your AI business operating system. v0.10.2 adds live-fetch — /browse-skills and /browse-connectors now pull recommendations directly from Anthropic's public Connectors directory and Plugin/Skill marketplaces, so they never go stale. /tune-up surfaces what's new since your last run. Plus onboarding, daily brief, voice writer, audit, weekly self-improvement, plan-then-approve file organization, and /optimize speed-fix."
     }
   ]
 }

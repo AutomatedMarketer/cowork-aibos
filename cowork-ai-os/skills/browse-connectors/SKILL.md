@@ -16,6 +16,12 @@ This is a recommender, not a search engine. You pick what fills the user's bigge
 3. `about-me/about-me.md` — their role + tools-used list.
 4. `references/connectors-catalog.md` (in this skill's folder) — the bundled catalog of MCP connectors, organized by the 7 buckets.
 
+**v0.10.2 update: live-fetch the directory before falling back to the bundled snapshot.**
+
+Before reading `references/connectors-catalog.md`, follow the procedure in [`lib/fetch-live-catalog.md`](lib/fetch-live-catalog.md). Try the live fetch from `https://claude.com/connectors` first. Fall back to the bundled snapshot ONLY if the live fetch fails. Tell the user which source the recommendations came from.
+
+The bundled snapshot at `references/connectors-catalog.md` remains in place as the offline fallback (and as a useful 7-bucket framework for organizing recommendations) — but it is no longer the primary source.
+
 If `about-me/connections.md` or `business-brain.md` is missing or empty, stop and tell the user: *"I need your `about-me/` files first. Run `/onboard` to build them (or `/audit` to see what's missing)."*
 
 ## The 7 Connection buckets (the framework)

@@ -7,6 +7,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.10.2] — 2026-05-14 — "Live-fetch the Anthropic Directories"
+
+### Added
+
+- **Live-fetch helper for `/browse-connectors`** (`skills/browse-connectors/lib/fetch-live-catalog.md`) — fetches the current Cowork Connectors directory from `https://claude.com/connectors` (public, ~200+ connectors). Bundled `references/connectors-catalog.md` becomes the offline cache fallback only.
+- **Live-fetch helper for `/browse-skills`** (`skills/browse-skills/lib/fetch-live-catalog.md`) — fetches both Anthropic plugin marketplaces in parallel (`anthropics/claude-plugins-official` + `anthropics/skills`). Bundled `references/skills-catalog.md` becomes the offline cache fallback only.
+- **`/tune-up` Gate 3 — "What's new since last tune-up" step** — diffs the live directories against the last tune-up date (read from `about-me/memory.md`), surfaces newly-available connectors/skills that match the user's `business-brain.md`. Turns /tune-up into the weekly habit that keeps the user's stack current.
+
+### Changed
+
+- **`/browse-connectors` SKILL.md** — primary path now live-fetch from `claude.com/connectors`; bundled snapshot is fallback.
+- **`/browse-skills` SKILL.md** — primary path now parallel live-fetch from both Anthropic marketplaces; bundled snapshot is fallback. Cross-references `~/.claude/plugins/installed_plugins.json` so we don't recommend plugins the user already has.
+- **plugin.json description** — updated to reflect v0.10.2's live-fetch capability.
+
+### Why
+
+Anthropic adds 5-20 new connectors per week (per their public directory). Bundled catalogs in plugin releases go stale within days. v0.10.2 closes the staleness gap by treating the official public sources as the source of truth, with bundled snapshots demoted to offline-only fallback. Validated 2026-05-14: all three sources (`claude.com/connectors`, `anthropics/claude-plugins-official` marketplace.json, `anthropics/skills` marketplace.json) are publicly fetchable without login.
+
+### Notes
+
+- No SOPs touched (per architecture rule — SOPs live in private course workspace, not this public plugin repo).
+- `/onboard` Phase 5 (Connectors) and Phase 7 (Skills tour) inherit the live-fetch automatically since they delegate to the recommenders.
+- `/level-up` similarly inherits — no skill rewrites needed.
+- Bundled `references/*.md` catalogs intentionally stay in place as offline fallback.
+
+---
+
 ## [0.10.1] — 2026-05-12
 
 ### Fixed — Security hardening from full repo security review
