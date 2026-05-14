@@ -48,6 +48,16 @@ These should usually be the first recommendations unless the user already has th
 - **first-week use case:** Ask Claude to "write me a 5-page proposal for [client]" and it produces a real .docx file you can open in Word.
 - **gotchas:** None significant.
 - **anti-pattern:** None.
+
+### Cowork Sales (Wave 2 add-on plugin)
+- **slug:** automatedmarketer/cowork-sales
+- **what it does:** Personalized daily sales ritual. 4 skills — `/onboard-sales` (7-phase wizard with smart-suggestion from your business-brain), `/daily-sales-ritual` (channel-aware daily fire — 3-column brief), `/rro-email` (universal reach-out writer with 12-line skeleton + 5 awareness levels + banned-category enforcement), `/dream-100` (data-driven Build/Operate modes, works even if you have no network yet).
+- **best for:** Every business type that needs a daily sales rhythm — coaches, agency owners, course creators, creators, solopreneurs, B2B sellers, local service. The 8-channel personalization (email / social / communities / search / cold / in-person / borrowed / paid) matches the ritual to where YOUR clients actually live.
+- **install:** `/plugin marketplace add automatedmarketer/cowork-sales` then `/plugin install cowork-sales@cowork-sales`
+- **first-week use case:** Run `/onboard-sales` — ~13 min wizard ends with your first daily brief in hand and a Next Move you can do today.
+- **gotchas:** Requires cowork-ai-os v0.10+ identity files (about-me, business-brain, connections). Wizard halts if missing — run `/onboard` from cowork-ai-os first. Also requires Gmail + Fathom connectors (run `/browse-connectors` if not wired).
+- **anti-pattern:** Don't install if you've decided sales doesn't matter to your business. (Spoiler: it does.)
+- **last verified:** 2026-05-14
 - **last verified:** 2026-05-12
 
 ---
