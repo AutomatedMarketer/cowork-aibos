@@ -71,11 +71,11 @@ echo ""
 echo "→ Verifying zip contents..."
 
 REQUIRED_FILES=(
-  "cowork-ai-os/.claude-plugin/plugin.json"
-  "cowork-ai-os/skills/onboard/SKILL.md"
-  "cowork-ai-os/skills/morning-brief/SKILL.md"
-  "cowork-ai-os/skills/onboard-daily-brief/SKILL.md"
-  "cowork-ai-os/skills/brief-source-comms/SKILL.md"
+  ".claude-plugin/plugin.json"
+  "skills/onboard/SKILL.md"
+  "skills/morning-brief/SKILL.md"
+  "skills/onboard-daily-brief/SKILL.md"
+  "skills/brief-source-comms/SKILL.md"
 )
 
 MISSING=0
