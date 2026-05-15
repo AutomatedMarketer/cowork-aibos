@@ -144,6 +144,19 @@ The 9-phase walkthrough begins.
 
 ## 🍎 ✅ Mac install (recommended): zip upload
 
+> ### ⚠️ Already tried installing this plugin before? Read this first.
+>
+> Cowork has a known Mac quirk: **if you've previously uploaded a plugin with the same name (even a failed or stale attempt), the next upload is silently rejected** — no error toast, no log line, the new zip just doesn't replace the old one. This happens because Cowork sends `overwrite=false` on every upload and there's no UI affordance to override it.
+>
+> **Fix before you re-upload (30 seconds):**
+> 1. 🗑️ Open Claude Cowork → **Settings → Customize → Plugins** (or **Skills**, depending on Cowork version)
+> 2. Find any existing entry for `cowork-ai-os` — including manually-repacked attempts or stale uploads
+> 3. **Remove / delete it** (trash icon, "Uninstall", or "Remove")
+> 4. 🔄 Quit Cowork fully → relaunch (clears the in-memory marketplace cache)
+> 5. Proceed to the install steps below
+>
+> If this is your **first time** installing this plugin, skip this section.
+
 This is the recommended install path for all Mac users. It bypasses Anthropic's open Cowork-on-macOS bugs (🚧 [#26951](https://github.com/anthropics/claude-code/issues/26951), 🚧 [#28125](https://github.com/anthropics/claude-code/issues/28125)) and works on every Cowork build that supports plugin uploads. Workaround confirmed by users in [#39400](https://github.com/anthropics/claude-code/issues/39400).
 
 ### ⏱️ 5 steps, ~30 seconds
@@ -164,6 +177,7 @@ That's it. No marketplace, no terminal, no SSH keys, no `git --version` requirem
 
 | Symptom | What to do |
 |---|---|
+| 🤐 Upload appears to succeed but plugin doesn't update / still showing old version | You have a stale entry from a previous upload attempt. Remove the old entry first (see the "Already tried installing" callout at the top of this section). Cowork silently rejects same-name re-uploads. |
 | 🔍 Can't find "Upload" / "Custom plugin" option | Look for "From file" / "Local plugin" / "Add manually". If genuinely absent, your Cowork version is older than the upload feature — 🔄 quit, update Claude Desktop, relaunch. |
 | 📄 Upload rejects the file | Confirm the file extension is `.zip` (not `.plugin`). Re-download directly from the [Releases page](https://github.com/automatedmarketer/cowork-ai-os/releases/latest); don't rename. |
 | 🚫 Plugin uploads but `start onboarding` does nothing | Open a **brand new** Cowork task. Skills load on session start, not retroactively. |
