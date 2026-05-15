@@ -3,6 +3,7 @@
   "owner": {
     "name": "Nuno Tavares"
   },
+  "description": "AI operating system for Claude Cowork. Onboarding wizard, daily brief, voice writer, audit, file organization, weekly self-improvement, and /optimize speed-fix. Live-fetches Anthropic's Connectors + Plugin/Skill directories so recommendations never go stale.",
   "plugins": [
     {
       "name": "cowork-ai-os",
