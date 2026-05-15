@@ -31,7 +31,7 @@ Cowork AI OS is an open-source plugin that turns Claude Cowork into a configured
 | [⚠️ Mac users — read this first](#-mac-users--read-this-first) | Mac users (git prereq + known Mac issues) |
 | [⚠️ Windows users — read this first](#-windows-users--read-this-first) | Windows users (git prereq) |
 | [Install](#install) | The 4-step install |
-| [✅ Mac install (recommended): zip upload](#-mac-install-recommended-zip-upload) | **Recommended path for all Mac users** |
+| [🍎 Mac install (recommended): zip upload](#-mac-install-recommended-zip-upload) | **Recommended path for all Mac users** |
 | [The 9 phases](#the-9-phases) | Time budget for onboarding |
 | [Troubleshooting](#troubleshooting) | When things go sideways |
 
@@ -142,31 +142,32 @@ The 9-phase walkthrough begins.
 
 ---
 
-## ✅ Mac install (recommended): zip upload
+## 🍎 ✅ Mac install (recommended): zip upload
 
-This is the recommended install path for all Mac users. It bypasses Anthropic's open Cowork-on-macOS bugs ([#26951](https://github.com/anthropics/claude-code/issues/26951), [#28125](https://github.com/anthropics/claude-code/issues/28125)) and works on every Cowork build that supports plugin uploads. Workaround confirmed by users in [#39400](https://github.com/anthropics/claude-code/issues/39400).
+This is the recommended install path for all Mac users. It bypasses Anthropic's open Cowork-on-macOS bugs (🚧 [#26951](https://github.com/anthropics/claude-code/issues/26951), 🚧 [#28125](https://github.com/anthropics/claude-code/issues/28125)) and works on every Cowork build that supports plugin uploads. Workaround confirmed by users in [#39400](https://github.com/anthropics/claude-code/issues/39400).
 
-### 5 steps, ~30 seconds
+### ⏱️ 5 steps, ~30 seconds
 
-1. Download the latest **`cowork-ai-os.zip`** from the [Releases page](https://github.com/automatedmarketer/cowork-ai-os/releases/latest) (or your training portal). **Don't extract it.** Keep the file as a single `.zip`.
-2. Open Claude Desktop → click your name (top right) → **Settings**
-3. Go to **Customize** → **Browse plugins** → look for the option to **upload a custom plugin file**
-   > *Menu wording may vary slightly between Cowork versions — look for an "Upload", "Custom plugin", or "From file" option.*
-4. Drag in the zip. Wait for confirmation.
-5. Open a **fresh** Cowork task → type `start onboarding`
+1. **📦 Download** the latest **`cowork-ai-os.zip`** (or `cowork-ai-os-v0.10.2.zip`) from the [**Releases page → Assets**](https://github.com/automatedmarketer/cowork-ai-os/releases/latest) (or your training portal). **Don't extract it.** Keep the file as a single `.zip`.
+   > ⚠️ **Important:** download the zip from the **Releases page**, NOT the green **❌ Download ZIP** button at the top of the repo page. That button wraps the repo in an outer folder (`cowork-ai-os-main/`) which double-nests the plugin and breaks Cowork's validator.
+2. **⚙️ Open Claude Desktop** → click your name (top right) → **Settings**.
+3. **🔌 Customize → Browse plugins** → look for the option to **upload a custom plugin file**.
+   > 💡 Menu wording varies slightly between Cowork versions — look for "Upload", "Custom plugin", or "From file".
+4. **📤 Drag in the zip.** Wait for confirmation.
+5. **🚀 Open a fresh Cowork task** → type `start onboarding` (skills load on session start, not retroactively).
 
 That's it. No marketplace, no terminal, no SSH keys, no `git --version` requirement.
 
-> **Why is this the recommended Mac path?** Anthropic closed [#27196](https://github.com/anthropics/claude-code/issues/27196) ("All Anthropic plugins fail in Cowork on macOS") as **not planned** — they don't currently intend to fix the marketplace path on Mac. The zip-upload path is effectively the supported install method on macOS going forward.
+> 💡 **Why this is the recommended Mac path:** Anthropic closed [#27196](https://github.com/anthropics/claude-code/issues/27196) ("All Anthropic plugins fail in Cowork on macOS") as **not planned** — they don't currently intend to fix the marketplace path on Mac. The zip-upload path is effectively the supported install method on macOS going forward.
 
-### If something on stage looks weird
+### 🐛 Troubleshooting
 
 | Symptom | What to do |
 |---|---|
-| Can't find "Upload" / "Custom plugin" option | Look for "From file" / "Local plugin" / "Add manually". If genuinely absent, your Cowork version is older than the upload feature — quit, update Claude Desktop, relaunch. |
-| Upload rejects the file | Confirm the file extension is `.zip` (not `.plugin`). Re-download directly from the Release page; don't rename. |
-| Plugin uploads but `start onboarding` does nothing | Open a **brand new** Cowork task. Skills load on session start, not retroactively. |
-| Plugin disappears after restart | That's [#38429](https://github.com/anthropics/claude-code/issues/38429) — Anthropic-side persistence bug. Re-upload the zip after restart. |
+| 🔍 Can't find "Upload" / "Custom plugin" option | Look for "From file" / "Local plugin" / "Add manually". If genuinely absent, your Cowork version is older than the upload feature — 🔄 quit, update Claude Desktop, relaunch. |
+| 📄 Upload rejects the file | Confirm the file extension is `.zip` (not `.plugin`). Re-download directly from the [Releases page](https://github.com/automatedmarketer/cowork-ai-os/releases/latest); don't rename. |
+| 🚫 Plugin uploads but `start onboarding` does nothing | Open a **brand new** Cowork task. Skills load on session start, not retroactively. |
+| 👻 Plugin disappears after restart | That's 🚧 [#38429](https://github.com/anthropics/claude-code/issues/38429) — Anthropic-side persistence bug. 🔄 Re-upload the zip after restart. |
 
 ---
 
